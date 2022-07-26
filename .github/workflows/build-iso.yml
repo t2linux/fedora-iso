@@ -1,0 +1,50 @@
+---
+name: Build Fedora ISO
+
+on:
+  push:
+    branches: 
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: "Get version"
+        id: get_version
+        run: echo ::set-output name=VERSION::$(echo ${{ github.event.head_commit.message }} | sed 's/ \[rel\]//')
+
+      - name: "Build Fedora ISO"
+        run: |
+          docker run \
+          --privileged \
+          --rm \
+          -t \
+          -v "$(pwd)":/repo \
+          fedora:36
+          /repo/build.sh
+
+      - name: "Tags"
+        id: tag
+        run: |
+          count=$(git rev-list --count HEAD)
+          hash=$(git rev-parse --short HEAD)
+          echo "::set-output name=tag::r${count}.${hash}"
+
+      - name: Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: t2linux-fedora-iso-${{ steps.get_version.outputs.VERSION }}
+          path: ${{ github.workspace }}/output/*
+
+      - name: Release
+        if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[rel]') }}
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ${{ github.workspace }}/output/*
+          tag_name: ${{ steps.get_version.outputs.VERSION }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
