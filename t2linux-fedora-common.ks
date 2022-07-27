@@ -1,4 +1,4 @@
-repo --name=t2linux-fedora --cost=98 --baseurl=https://t2linux-fedora-repo.netlify.app/
+repo --name=t2linux-fedora --cost=98 --baseurl=https://t2linux-fedora-repo.netlify.app/repo/
 
 bootloader --append="intel_iommu=on iommu=pt pcie_ports=compat"
 
@@ -10,7 +10,7 @@ kernel-*.t2.*
 %end
 
 %post
-
+setenforce 0
 echo -e 'hid-apple\nbcm5974\nsnd-seq\napple_bce' > /etc/modules-load.d/apple_bce.conf
 echo -e 'add_drivers+=" hid_apple snd-seq apple_bce "\nforce_drivers+=" hid_apple snd-seq apple_bce "' > /etc/dracut.conf
 dracut -f

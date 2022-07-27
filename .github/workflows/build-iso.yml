@@ -9,6 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout
         uses: actions/checkout@v2
 
@@ -18,15 +19,13 @@ jobs:
 
       - name: "Build Fedora ISO"
         run: |
-          mkdir ./output
           docker run \
-          --privileged \
-          --rm \
-          -t \
-          -v "$(pwd)":/repo \
-          -v "./output":/output \
-          fedora:36
-          /repo/build.sh
+            --privileged \
+            --rm \
+            -t \
+            -v "$(pwd)":/repo \
+            fedora:36 \
+            /bin/bash -c 'cd /repo && ./build.sh'
 
       - name: "Tags"
         id: tag
@@ -39,14 +38,14 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: t2linux-fedora-iso-${{ steps.get_version.outputs.VERSION }}
-          path: ${{ github.workspace }}/output/*
+          path: ./output/*
 
       - name: Release
         if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[rel]') }}
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            ${{ github.workspace }}/output/*
+            ./output/*
           tag_name: ${{ steps.get_version.outputs.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

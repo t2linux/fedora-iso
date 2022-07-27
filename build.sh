@@ -10,15 +10,18 @@ dnf install -y \
   livecd-tools
 
 mkdir -p /tmp/kickstart_files/
-cp -rf /repo/files/* /tmp/kickstart_files/
+cp -rfv files/* /tmp/kickstart_files/
 
-git clone --single-branch --branch 36 https://pagure.io/fedora-kickstarts.git
-cd fedora-kickstarts
-git checkout 36
+git clone --single-branch --branch f36 https://pagure.io/fedora-kickstart.git /tmp/fedora-kickstarts
+cd /tmp/fedora-kickstarts
 
-cp -rfv /repo/t2linux-fedora-*.ks ./
+cp -rfv "/repo"/*.ks ./
+mkdir -p /var/cache/live
 
-livecd-creator --verbose --releasever=36 --config="t2linux-fedora-live-workstation.ks"
+livecd-creator --verbose --releasever=36 --config="t2linux-fedora-workstation-live.ks" --cache=/var/cache/live
 
-mkdir -p /output
-cp -rfv ./*.iso /output/
+cp -rfv ./*.iso "/repo"/
+cd "/repo"
+
+mkdir -p ./output
+zip -s 2000m ./output/"t2linux-fedora-workstaion-36-iso.zip" ./*.iso
