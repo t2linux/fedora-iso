@@ -20,4 +20,5 @@ cp -rfv /repo/t2linux-fedora-*.ks ./
 
 livecd-creator --verbose --releasever=36 --config="t2linux-fedora-live-workstation.ks"
 
+mkdir -p /output
 cp -rfv ./*.iso /output/
