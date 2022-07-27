@@ -18,11 +18,13 @@ jobs:
 
       - name: "Build Fedora ISO"
         run: |
+          mkdir -p /output
           docker run \
           --privileged \
           --rm \
           -t \
           -v "$(pwd)":/repo \
+          -v "./output":/output \
           fedora:36
           /repo/build.sh
 
