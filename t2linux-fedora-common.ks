@@ -1,4 +1,4 @@
-repo --name=t2linux-fedora --cost=98 --baseurl=https://t2linux-fedora-repo.netlify.app/repo/
+repo --install --name=t2linux-fedora --cost=98 --baseurl=https://t2linux-fedora-repo.netlify.app/repo/
 
 bootloader --append="intel_iommu=on iommu=pt pcie_ports=compat"
 
