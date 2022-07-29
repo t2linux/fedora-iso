@@ -9,9 +9,6 @@ dnf install -y \
   make \
   livecd-tools
 
-mkdir -p /tmp/kickstart_files/
-cp -rfv files/* /tmp/kickstart_files/
-
 git clone --single-branch --branch f36 https://pagure.io/fedora-kickstarts.git /tmp/fedora-kickstarts
 cd /tmp/fedora-kickstarts
 
