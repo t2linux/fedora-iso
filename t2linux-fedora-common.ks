@@ -17,5 +17,3 @@ setenforce 0
 dracut -f
 
 %end
-
-#update
