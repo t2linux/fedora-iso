@@ -21,4 +21,4 @@ cp -rfv ./*.iso "/repo"/
 cd "/repo"
 
 mkdir -p ./output
-split -b=2000M -x ./*.iso  ./output/t2linux-fedora-workstaion-36.iso.
+split -b 2000M -x ./*.iso  ./output/t2linux-fedora-workstaion-36.iso.
