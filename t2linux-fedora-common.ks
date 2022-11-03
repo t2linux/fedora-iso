@@ -6,8 +6,6 @@ bootloader --append="intel_iommu=on iommu=pt pcie_ports=compat"
 
 curl
 kernel-*.t2.*
--shim-ia32-15.[0-9]*-[0-9].x86_64
--shim-x64-15.[0-9]*-[0-9].x86_64
 t2linux-config
 t2linux-repo
 
