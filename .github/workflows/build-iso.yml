@@ -3,8 +3,6 @@ name: Build Fedora ISO
 
 on:
   push:
-    branches: 
-      - main
   workflow_dispatch:
   
 jobs:
@@ -58,6 +56,6 @@ jobs:
         with:
           files: |
             ./output/*
-          tag_name: nightly
+          tag_name: nightly-f37
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

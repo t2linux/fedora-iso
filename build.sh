@@ -9,13 +9,13 @@ dnf install -y \
   make \
   livecd-tools
 
-git clone --single-branch --branch f36 https://pagure.io/fedora-kickstarts.git /tmp/fedora-kickstarts
+git clone --single-branch --branch f37 https://pagure.io/fedora-kickstarts.git /tmp/fedora-kickstarts
 cd /tmp/fedora-kickstarts
 
 cp -rfv "/repo"/*.ks ./
 mkdir -p /var/cache/live
 
-livecd-creator --verbose --releasever=36 --config="t2linux-fedora-workstation-live.ks" --cache=/var/cache/live
+livecd-creator --verbose --releasever=37 --config="t2linux-fedora-workstation-live.ks" --cache=/var/cache/live
 
 cp -rfv ./*.iso "/repo"/
 cd "/repo"
