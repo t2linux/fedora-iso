@@ -24,7 +24,7 @@ jobs:
             --rm \
             -t \
             -v "$(pwd)":/repo \
-            fedora:36 \
+            fedora:37 \
             /bin/bash -c 'cd /repo && ./build.sh'
 
       - name: "Tags"
