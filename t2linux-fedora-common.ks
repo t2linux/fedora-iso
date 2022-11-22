@@ -17,12 +17,12 @@ if cat /etc/fstab | grep hfsplus ; then
     EFI_PARTITION=${EFI_DEV: -1}
     mkdir -p /tmp/efi_backup
     shopt  -s dotglob
-    cp -raf /boot/efi/* /tmp/efi_backup/
+    cp -rf /boot/efi/* /tmp/efi_backup/
     umount $EFI_DEV
     mkfs.vfat -F 32 $EFI_DEV
     mount $EFI_DEV /boot/efi/
-    cp -raf /opt/efi_backup/* /boot/efi/
-    parted ${EFI_DISK} set ${EFI_PARTITION} esp on
+    cp -rf /opt/efi_backup/* /boot/efi/
+    parted ${EFI_DEV::-1} set ${EFI_PARTITION} esp on
     rm -rf /opt/efi_backup
     sed -i '/hfsplus/d' /etc/fstab
     EFI_FAT_UUID=$(blkid ${EFI_DEV} -o export | grep -e '^UUID')
