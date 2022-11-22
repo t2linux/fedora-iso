@@ -22,6 +22,7 @@ if cat /etc/fstab | grep hfsplus ; then
     mkfs.vfat -F 32 $EFI_DEV
     mount $EFI_DEV /boot/efi/
     cp -rf /opt/efi_backup/* /boot/efi/
+
     parted ${EFI_DEV::-1} set ${EFI_PARTITION} esp on
     rm -rf /opt/efi_backup
     sed -i '/hfsplus/d' /etc/fstab
