@@ -27,13 +27,6 @@ jobs:
             fedora:37 \
             /bin/bash -c 'cd /repo && ./build.sh'
 
-      - name: "Tags"
-        id: tag
-        run: |
-          count=$(git rev-list --count HEAD)
-          hash=$(git rev-parse --short HEAD)
-          echo "::set-output name=tag::r${count}.${hash}"
-
       - name: Artifacts
         uses: actions/upload-artifact@v3
         with:
