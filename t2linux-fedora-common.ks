@@ -13,17 +13,20 @@ t2linux-repo
 %post
 
 if cat /etc/fstab | grep hfsplus ; then
-    EFI_DEV=$(df /boot/efi | tail -1 | awk '{print $1}')
+    EFI_DEV=$(df | grep boot/efi | tail -1 | awk '{print $1}')
     EFI_PARTITION=${EFI_DEV: -1}
     mkdir -p /tmp/efi_backup
     shopt  -s dotglob
     cp -rf /boot/efi/* /tmp/efi_backup/
+    fuser -k /boot/efi
     umount $EFI_DEV
-    mkfs.vfat -F 32 $EFI_DEV
+    mkfs.vfat $EFI_DEV
     mount $EFI_DEV /boot/efi/
     cp -rf /tmp/efi_backup/* /boot/efi/
+    umount $EFI_DEV
 
     parted ${EFI_DEV::-1} set ${EFI_PARTITION} esp on
+    mount $EFI_DEV /boot/efi
     rm -rf /tmp/efi_backup
     sed -i '/hfsplus/d' /etc/fstab
     EFI_FAT_UUID=$(blkid ${EFI_DEV} -o export | grep -e '^UUID')
