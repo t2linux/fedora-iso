@@ -2,8 +2,8 @@
 name: Build Fedora ISO
 
 on:
-  push:
   workflow_dispatch:
+  push:
   
 jobs:
   build:
@@ -12,10 +12,6 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: "Get version"
-        id: get_version
-        run: echo ::set-output name=VERSION::$(echo ${{ github.event.head_commit.message }} | sed 's/ \[rel\]//')
 
       - name: "Build Fedora ISO"
         run: |
@@ -30,21 +26,19 @@ jobs:
       - name: Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: t2linux-fedora-iso-${{ steps.get_version.outputs.VERSION }}
+          name: t2linux-fedora-iso
           path: ./output/*
 
       - name: Release
-        if: ${{ github.ref == 'refs/heads/main' && contains(github.event.head_commit.message, '[rel]') }}
         uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
             ./output/*
-          tag_name: ${{ steps.get_version.outputs.VERSION }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release Nightly
-        if: ${{ github.ref == 'refs/heads/main' }}
         uses: softprops/action-gh-release@v1
         with:
           files: |
