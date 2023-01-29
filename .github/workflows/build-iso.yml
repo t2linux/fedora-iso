@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
+      - name: "Increase Disk Space"
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+
       - name: Checkout
         uses: actions/checkout@v3
 

@@ -4,8 +4,8 @@ set -eu -o pipefail
 
 dnf install -y git pykickstart lorax anaconda lorax-lmc-novirt
 
-git clone --single-branch --branch f37 https://pagure.io/fedora-kickstarts.git /tmp/fedora-kickstarts
-cd /tmp/fedora-kickstarts
+git clone --single-branch --branch f37 https://pagure.io/fedora-kickstarts.git /var/fedora-kickstarts
+cd /var/fedora-kickstarts
 cp -rfv "/repo"/*.ks ./
 sudo ksflatten -c t2linux-fedora-workstation-live.ks -o flat.ks
 
