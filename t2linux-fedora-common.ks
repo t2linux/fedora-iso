@@ -4,7 +4,7 @@ bootloader --append="intel_iommu=on iommu=pt pcie_ports=compat"
 
 %packages
 
-kernel-*.t2.*
+kernel-core*.t2.*
 t2linux-config
 t2linux-repo
 python3-blivet-3.5.0
