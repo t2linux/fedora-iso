@@ -9,7 +9,7 @@ cd /var/fedora-kickstarts
 cp -rfv "/repo"/*.ks ./
 sudo ksflatten -c t2linux-fedora-workstation-live.ks -o flat.ks
 
-livemedia-creator --ks flat.ks --no-virt --resultdir /var/lmc --project Fedora-Workstation-T2Linux-Live --make-iso --volid Fedora-WS-T2-Live-37-1.7 --iso-only --iso-name Fedora-Workstation-T2Linux-Live-x86_64-37-1.7.iso --releasever 37
+livemedia-creator --ks flat.ks --no-virt --resultdir /var/lmc --project Fedora-Workstation-t2linux-Live --make-iso --volid Fedora-WS-t2-Live-37-1.7 --iso-only --iso-name Fedora-Workstation-t2linux-Live-x86_64-37-1.7.iso --releasever 37
 
 cp -rfv /var/lmc/*.iso "/repo"/
 cd "/repo"
@@ -18,5 +18,5 @@ mkdir -p ./output
 if (( $(stat -c%s *.iso) > 199999999 )); then
     mv *.iso ./output/
 else
-    split -b 2000M -x ./*.iso  ./output/Fedora-Workstation-T2Linux-Live-x86_64-37-1.7.iso. 
+    split -b 2000M -x ./*.iso  ./output/Fedora-Workstation-t2linux-Live-x86_64-37-1.7.iso. 
 fi
