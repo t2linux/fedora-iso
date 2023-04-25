@@ -18,5 +18,5 @@ mkdir -p ./output
 if (( $(stat -c%s *.iso) > 199999999 )); then
     mv *.iso ./output/
 else
-    split -b 2000M -x ./*.iso  ./output/t2linux-fedora-workstation-37.iso.
+    split -b 2000M -x ./*.iso  ./output/Fedora-Workstation-T2Linux-Live-x86_64-37-1.7.iso. 
 fi
