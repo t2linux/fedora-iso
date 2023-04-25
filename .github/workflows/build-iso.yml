@@ -27,7 +27,7 @@ jobs:
             --rm \
             -t \
             -v "$(pwd)":/repo \
-            fedora:37 \
+            fedora:38 \
             /bin/bash -c 'cd /repo && ./build.sh'
 
       - name: Artifacts
