@@ -2,45 +2,53 @@
 name: Build Fedora ISO
 
 on:
-  workflow_dispatch:
   push:
+
+concurrency:
+  group: ${{ github.ref }}
+  cancel-in-progress: true
   
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
 
-      - name: "Increase Disk Space"
+      - name: Increase Disk Space
         run: |
           sudo rm -rf /usr/share/dotnet
           sudo rm -rf /usr/local/lib/android
           sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo docker image prune --all --force
           sudo rm -rf /home/linuxbrew
+          sudo apt-get remove -y --purge fonts-noto-color-emoji subversion \
+              sshpass g++ gcc gnupg2 imagemagick jq libmagic-dev \
+              libmagickcore-dev	libmagickwand-dev	libssl-dev \
+              mercurial openssh-client p7zip-full	ftp bison
+          sudo apt-get autoremove -y
 
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          submodules: recursive
 
-      - name: "Build Fedora ISO"
+      - name: Build ISO
         run: |
           docker run \
             --privileged \
-            --rm \
-            -t \
-            -v "$(pwd)":/repo \
-            fedora:38 \
-            /bin/bash -c 'cd /repo && ./build.sh'
+            -v "$PWD":/repo \
+            ghcr.io/t2linux/fedora-dev:latest \
+            /repo/build.sh
 
-      - name: Artifacts
+      - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: t2linux-fedora-iso
-          path: ./output/*
+          name: fedora-iso
+          path: ./_output/*
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            ./output/*
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            _output/*.iso
