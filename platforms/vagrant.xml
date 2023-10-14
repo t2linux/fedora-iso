@@ -31,4 +31,7 @@
 		<package name="glibc-langpack-en"/>
 		<package name="qemu-guest-agent"/>
 	</packages>
+	<packages type="uninstall" profiles="Vagrant">
+		<package name="cloud-init"/>
+	</packages>
 </image>
