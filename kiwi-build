@@ -1,0 +1,64 @@
+#!/bin/bash
+
+# Simple wrapper to call kiwi properly for image builds
+# Author: Neal Gompa <ngompa@fedoraproject.org>
+
+set -eu -o pipefail
+
+kiwibuildsh="$(basename "$0")"
+
+usage() {
+	echo >&2 "usage: $kiwibuildsh --output-dir=DIR --image-type=TYPE --image-profile=PROFILE [--debug]"
+	echo >&2 "   eg: $kiwibuildsh --output-dir=/var/tmp/work --image-type=oem --image-profile=cloud --debug"
+	echo >&2 "   eg: $kiwibuildsh --output-dir=/var/tmp/work --image-type=oem --image-profile=cloud"
+	exit 255
+}
+
+optTemp=$(getopt --options '+o:,t:,p:,d,h' --longoptions 'output-dir:,image-type:,image-profile:,debug,help' --name "$kiwibuildsh" -- "$@")
+eval set -- "$optTemp"
+unset optTemp
+
+output_dir=
+image_type=
+image_profile=
+debug=
+
+while true; do
+	case "$1" in
+		-o|--output-dir) output_dir="$2" ; shift 2 ;;
+		-t|--image-type) image_type="$2" ; shift 2 ;;
+		-p|--image-profile) image_profile="$2" ; shift 2 ;;
+		-d|--debug) debug="--debug" ; shift ;;
+		-h|--help) usage ;;
+		--) shift ; break ;;
+	esac
+done
+
+if [ -z "$output_dir" ] || [ -z "$image_type" ] || [ -z "$image_profile" ]; then
+	echo "Options not set!"
+	usage
+fi
+
+if [ -e "/sys/fs/selinux/enforce" ]; then
+	# Disable SELinux enforcement during the image build if it's enforcing
+	selinux_enforcing="$(cat /sys/fs/selinux/enforce)"
+	if [ "$selinux_enforcing" = "1" ]; then
+		setenforce 0
+	fi
+fi
+
+pushd kiwi-desc
+	set +e
+	kiwi-ng ${debug} --type="${image_type}" --profile="${image_profile}" --color-output system build --description "./" --target-dir "${output_dir}"
+	kiwi_status=$?
+	set -e
+popd
+
+if [ -e "/sys/fs/selinux/enforce" ]; then
+	# Re-enable SELinux enforcement now that image build is done
+	if [ "$selinux_enforcing" = "1" ]; then
+		setenforce 1
+	fi
+fi
+
+exit $kiwi_status

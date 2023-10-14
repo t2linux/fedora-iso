@@ -1,0 +1,37 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="GNOME-Desktop" description="GNOME Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+		<profile name="KDE-Desktop" description="KDE Plasma Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="DesktopCommon">
+		<namedCollection name="internet-browser"/>
+		<namedCollection name="fonts"/>
+		<namedCollection name="multimedia"/>
+		<namedCollection name="networkmanager-submodules"/>
+		<namedCollection name="office-suite"/>
+		<namedCollection name="hardware-support"/>
+		<namedCollection name="print-client"/>
+		<namedCollection name="guest-desktop-agents"/>
+		<namedCollection name="standard"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="GNOME-Desktop">
+		<namedCollection name="workstation-product-environment"/>
+		<package name="fedora-release-workstation"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="KDE-Desktop">
+		<namedCollection name="kde-desktop-environment"/>
+		<namedCollection name="kde-apps"/>
+		<namedCollection name="kde-media"/>
+		<package name="fuse"/>
+		<package name="fedora-release-kde"/>
+		<package name="kde-l10n"/>
+		<ignore name="@admin-tools"/>
+		<ignore name="gnome-disk-utility"/>
+		<ignore name="system-config-printer"/>
+	</packages>
+</image>

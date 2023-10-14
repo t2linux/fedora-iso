@@ -6,6 +6,23 @@ The `rawhide` branch is used for Fedora Rawhide images and each release branch i
 
 All changes should be made via the PR workflow.
 
+## Image variants
+
+* Cloud Edition (image type: `oem`, image profiles: `Cloud-OpenStack`/`Cloud-AmazonEC2`/`Cloud-Azure`/`Cloud-GCE`)
+* Workstation Edition (image type: `iso`, image profiles: `Workstation-Live`)
+* KDE Spin (image type: `iso`, image profiles: `KDE-Live`)
+
+## Image build quickstart
+
+Set up your development environment and run the image build (substitute `<image_type>` and `<image_profile>` for the appropriate settings):
+
+```bash
+# Install kiwi
+[]$ sudo dnf --assumeyes install kiwi
+# Run the image build
+[]$ sudo ./kiwi-build --image-type=<image_type> --image-profile=<image_profile> --output-dir ./outdir
+```
+
 ## Licensing
 
 This is free software: you can redistribute it and/or modify

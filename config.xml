@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="7.4" name="Fedora-Linux">
+	<description type="system">
+		<author>Fedora Project Contributors</author>
+		<contact>devel@lists.fedoraproject.org</contact>
+		<specification>Fedora Linux</specification>
+	</description>
+	<preferences>
+		<version>0.0.0</version>
+		<packagemanager>dnf</packagemanager>
+		<locale>en_US</locale>
+		<keytable>us</keytable>
+		<timezone>UTC</timezone>
+		<release-version>rawhide</release-version>
+	</preferences>
+	<include from="this://./repositories/core.xml"/>
+	<include from="this://./components/boot.xml"/>
+	<include from="this://./components/desktop-environments.xml"/>
+	<include from="this://./components/liveinstall.xml"/>
+	<include from="this://./components/users.xml"/>
+	<include from="this://./platforms/cloud.xml"/>
+	<include from="this://./platforms/vagrant.xml"/>
+	<include from="this://./platforms/workstation.xml"/>
+	<packages type="bootstrap">
+		<package name="basesystem"/>
+		<package name="filesystem"/>
+	</packages>
+</image>

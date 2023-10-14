@@ -1,0 +1,30 @@
+<image>
+	<profiles>
+		<profile name="LiveInstall" description="Live Install ISO">
+			<requires profile="BootCore"/>
+		</profile>
+	</profiles>
+	<preferences profiles="LiveInstall">
+		<type image="iso" publisher="Fedora Project" volid="Fedora_Linux" primary="true" flags="dmsquash" firmware="uefi" kernelcmdline="quiet rhgb" mediacheck="false">
+			<bootloader name="grub2" grub_template="grub.cfg.iso-template" console="console" timeout="10"/>
+		</type>
+	</preferences>
+	<packages type="iso" patternType="plusRecommended" profiles="LiveInstall">
+		<!-- The point of a live image is to install -->
+		<namedCollection name="anaconda-tools"/>
+		<package name="anaconda"/>
+		<package name="anaconda-install-env-deps"/>
+		<package name="anaconda-live"/>
+		<!-- Need this for SVG release note images -->
+		<package name="aajohan-comfortaa-fonts"/>
+		<package name="dracut-live"/>
+		<package name="glibc-all-langpacks"/>
+		<package name="kernel"/>
+		<package name="kernel-modules"/>
+		<package name="kernel-modules-extra"/>
+		<package name="livesys-scripts"/>
+		<package name="btrfs-progs"/>
+		<package name="udisks2-btrfs"/>
+		<ignore name="gfs2-utils"/>
+	</packages>
+</image>

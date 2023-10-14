@@ -1,0 +1,34 @@
+<image>
+	<profiles>
+		<profile name="Vagrant" description="Vagrant guest image">
+			<requires profile="CloudCore"/>
+		</profile>
+	</profiles>
+	<preferences profiles="Vagrant">
+		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check console=tty1 console=ttyS0,115200n8 net.ifnames=0 biosdevname=0" devicepersistency="by-uuid" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi" format="vagrant" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
+			<bootloader name="grub2" console="serial" timeout="1"/>
+			<size unit="G">5</size>
+			<systemdisk>
+				<volume name="@root=root"/>
+				<volume name="home" parent="/"/>
+				<volume name="var" parent="/"/>
+			</systemdisk>
+			<oemconfig>
+				<oem-resize>false</oem-resize>
+			</oemconfig>
+		</type>
+	</preferences>
+	<users profiles="Vagrant">
+		<!-- Standard password for the vagrant user, used by all images -->
+		<user name="vagrant" groups="vagrant" password="vagrant" home="/home/vagrant" pwdformat="plain" />
+		<user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
+	</users>
+	<packages type="image" patternType="plusRecommended" profiles="Vagrant">
+		<package name="dnf-yum"/>
+		<package name="rsync"/>
+		<package name="fuse-sshfs"/>
+		<package name="gdisk"/>
+		<package name="glibc-langpack-en"/>
+		<package name="qemu-guest-agent"/>
+	</packages>
+</image>

@@ -1,0 +1,12 @@
+<image>
+	<profiles>
+		<profile name="Workstation-Live" description="Workstation Edition Live DVD">
+			<requires profile="GNOME-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="KDE-Live" description="KDE Plasma Spin Live DVD">
+			<requires profile="KDE-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>
