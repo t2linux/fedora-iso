@@ -1,6 +1,6 @@
 repo --name=tmp --cost=98 --baseurl=https://t2linux-fedora-repo.netlify.app/
 
-bootloader --append="intel_iommu=on iommu=pt pcie_ports=compat"
+bootloader --append="intel_iommu=on iommu=pt"
 
 %packages
 
