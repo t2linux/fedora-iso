@@ -44,11 +44,11 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: fedora-iso
-          path: ./_output/*
+          path: builddir/iso/*
 
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: |
-            _output/*.iso
+            builddir/iso/*

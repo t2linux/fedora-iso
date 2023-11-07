@@ -1,18 +1,31 @@
 #!/usr/bin/bash
+set -e
 
-cd /repo/fedora-kickstarts
-cp -rfv /repo/*.ks .
-sudo ksflatten -c t2linux-fedora-workstation-live.ks -o flat.ks
+kickstarts=( "fedora-live-workstation" )
 
-livemedia-creator \
-    --ks flat.ks \
-    --no-virt \
-    --resultdir /var/lmc \
-    --project Fedora-Workstation-Live-t2linux \
-    --make-iso \
-    --volid Fedora-WS-Live-t2-39-0.1.5 \
-    --iso-only \
-    --iso-name Fedora-Workstation-Live-t2linux-x86_64-39-0.1.5.iso \
-    --releasever 39
+mkdir -p /repo/builddir/iso
+builddir=$(mktemp -d -p "/repo/builddir"); export builddir
+function cleanup {
+  rm -rf "$builddir"
+}
+trap cleanup EXIT
 
-mkdir -p _output && mv /var/lmc/*.iso _output/
+for ks in "${kickstarts[@]}"; do
+    ks_builddir="$builddir/$ks"; mkdir -p $ks_builddir; cd "$ks_builddir"
+    cp -r /repo/fedora-kickstarts/* .; cp -f /repo/*.ks .
+    echo '%include t2linux-fedora-common.ks' >> "$ks.ks"
+    sudo ksflatten --config "$ks.ks" --output "$ks-flat.ks" --version F39
+    livemedia-creator \
+        --make-iso \
+        --iso-only \
+        --no-virt \
+        --resultdir results \
+        --releasever 39 \
+        --ks "$ks-flat.ks" \
+        --project t2linux-Fedora-Live \
+        --volid t2linux-Fedora-Live-39 \
+        --iso-name "t2linux-$ks-39.iso"
+    find results/*.iso -size +2G -exec sh -c "split -b 1999M -x {} {}. && rm {}" \;
+    mv results/* /repo/builddir/iso/
+done
+cleanup
