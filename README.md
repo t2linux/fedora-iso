@@ -1,5 +1,5 @@
 # t2linux-fedora-iso
-A instalation ISO for Fedora on T2 macs. It uses the kernel patches from the [t2linux](https://t2linux.org) project. Read the [kernel README](https://github.com/t2linux/fedora-kernel/) for more information. Make sure to download the `.iso` or `.iso.0x` file.
+A installation ISO for Fedora on T2 macs. It uses the kernel patches from the [t2linux](https://t2linux.org) project. Read the [kernel README](https://github.com/t2linux/fedora-kernel/) for more information. Make sure to download the `.iso` or `.iso.0x` file.
 
 Combine the split ISOs with `cat name_of_iso_here.iso.* > full.iso`.
 
