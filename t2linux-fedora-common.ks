@@ -1,4 +1,4 @@
-repo --name=tmp-t2linux --baseurl=https://download.copr.fedorainfracloud.org/results/sharpenedblade/t2linux/fedora-$releasever-$basearch/
+repo --name=tmp-t2linux  --cost=98 --baseurl=https://download.copr.fedorainfracloud.org/results/sharpenedblade/t2linux/fedora-$releasever-$basearch/
 
 bootloader --append="intel_iommu=on iommu=pt"
 
