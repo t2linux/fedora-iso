@@ -2,6 +2,9 @@
 	<profiles>
 		<profile name="BootCore" description="Boot core packages"/>
 	</profiles>
+	<profiles>
+		<profile name="BootCoreUKI" description="Boot core packages for UKI"/>
+	</profiles>
 	<packages type="image" patternType="plusRecommended" profiles="BootCore">
 		<package name="grub2-efi-aa64" arch="aarch64"/>
 		<package name="grub2-efi-aa64-modules" arch="aarch64"/>
@@ -15,6 +18,15 @@
 		<package name="kernel-core"/>
 		<package name="systemd-oomd-defaults"/>
 		<package name="systemd-resolved"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="BootCoreUKI">
+		<package name="shim-signed-aa64" arch="aarch64"/>
+		<package name="shim-signed-x64" arch="x86_64"/>
+		<package name="systemd-oomd-defaults"/>
+		<package name="systemd-resolved"/>
+		<package name="kernel-uki-virt"/>
+		<package name="python3-virt-firmware"/>
+		<package name="uki-direct"/>
 	</packages>
 	<packages type="iso" patternType="plusRecommended" profiles="BootCore">
 		<package name="grub2-efi-aa64-cdboot" arch="aarch64"/>
