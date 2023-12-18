@@ -8,16 +8,17 @@ set -eu -o pipefail
 kiwibuildsh="$(basename "$0")"
 
 usage() {
-	echo >&2 "usage: $kiwibuildsh --output-dir=DIR --image-type=TYPE --image-profile=PROFILE [--debug]"
-	echo >&2 "   eg: $kiwibuildsh --output-dir=/var/tmp/work --image-type=oem --image-profile=cloud --debug"
+	echo >&2 "usage: $kiwibuildsh [--kiwi-description-dir=DIR] --output-dir=DIR --image-type=TYPE --image-profile=PROFILE [--debug]"
+	echo >&2 "   eg: $kiwibuildsh --kiwi-description-dir=/var/tmp/desc --output-dir=/var/tmp/work --image-type=oem --image-profile=cloud --debug"
 	echo >&2 "   eg: $kiwibuildsh --output-dir=/var/tmp/work --image-type=oem --image-profile=cloud"
 	exit 255
 }
 
-optTemp=$(getopt --options '+o:,t:,p:,d,h' --longoptions 'output-dir:,image-type:,image-profile:,debug,help' --name "$kiwibuildsh" -- "$@")
+optTemp=$(getopt --options '+k:,o:,t:,p:,d,h' --longoptions 'kiwi-description-dir:,output-dir:,image-type:,image-profile:,debug,help' --name "$kiwibuildsh" -- "$@")
 eval set -- "$optTemp"
 unset optTemp
 
+kiwi_description_dir="./"
 output_dir=
 image_type=
 image_profile=
@@ -25,6 +26,7 @@ debug=
 
 while true; do
 	case "$1" in
+		-k|--kiwi-description-dir) kiwi_description_dir="$2" ; shift 2 ;;
 		-o|--output-dir) output_dir="$2" ; shift 2 ;;
 		-t|--image-type) image_type="$2" ; shift 2 ;;
 		-p|--image-profile) image_profile="$2" ; shift 2 ;;
@@ -47,12 +49,10 @@ if [ -e "/sys/fs/selinux/enforce" ]; then
 	fi
 fi
 
-pushd kiwi-desc
-	set +e
-	kiwi-ng ${debug} --type="${image_type}" --profile="${image_profile}" --color-output system build --description "./" --target-dir "${output_dir}"
-	kiwi_status=$?
-	set -e
-popd
+set +e
+kiwi-ng ${debug} --type="${image_type}" --profile="${image_profile}" --color-output system build --description "${kiwi_description_dir}" --target-dir "${output_dir}"
+kiwi_status=$?
+set -e
 
 if [ -e "/sys/fs/selinux/enforce" ]; then
 	# Re-enable SELinux enforcement now that image build is done
