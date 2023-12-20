@@ -26,7 +26,7 @@ Set up your development environment and run the image build (substitute `<image_
 
 ## CI information
 
-This project is tested using the Software Factory Zuul CI instance
+This project is tested using the [Software Factory Zuul CI instance](https://fedora.softwarefactory-project.io/zuul/project/pagure.io/fedora-kiwi-descriptions)
 using the [Test Management Tool](https://tmt.readthedocs.io/).
 
 ## Licensing
