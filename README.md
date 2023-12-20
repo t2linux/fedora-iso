@@ -24,6 +24,11 @@ Set up your development environment and run the image build (substitute `<image_
 []$ sudo ./kiwi-build --image-type=<image_type> --image-profile=<image_profile> --output-dir ./outdir
 ```
 
+## CI information
+
+This project is tested using the Software Factory Zuul CI instance
+using the [Test Management Tool](https://tmt.readthedocs.io/).
+
 ## Licensing
 
 This is free software: you can redistribute it and/or modify

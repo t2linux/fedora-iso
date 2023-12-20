@@ -1,0 +1,8 @@
+summary: Build Vagrant image for libvirt
+discover:
+    how: fmf
+environment:
+    image_type: oem
+    image_profile: Vagrant-libvirt
+execute:
+    how: tmt

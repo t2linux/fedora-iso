@@ -1,0 +1,11 @@
+summary: Build image
+require:
+  - distribution-gpg-keys
+  - git-core
+  - kiwi
+  - libselinux-utils
+framework: shell
+path: /
+test: |
+  ./kiwi-build --debug --image-type="$image_type" --image-profile="$image_profile" --kiwi-description-dir="${TMT_TREE}" --output-dir="${TMT_TEST_DATA}"
+duration: 60m

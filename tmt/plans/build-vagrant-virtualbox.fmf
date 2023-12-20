@@ -1,0 +1,11 @@
+summary: Build Vagrant image for VirtualBox
+discover:
+    how: fmf
+adjust:
+    enabled: false
+    when: arch != x86_64
+environment:
+    image_type: oem
+    image_profile: Vagrant-VirtualBox
+execute:
+    how: tmt

@@ -1,0 +1,8 @@
+summary: Build OpenStack image
+discover:
+    how: fmf
+environment:
+    image_type: oem
+    image_profile: Cloud-OpenStack
+execute:
+    how: tmt

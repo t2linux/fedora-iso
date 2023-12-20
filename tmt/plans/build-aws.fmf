@@ -1,0 +1,8 @@
+summary: Build AWS EC2 image
+discover:
+    how: fmf
+environment:
+    image_type: oem
+    image_profile: Cloud-AmazonEC2
+execute:
+    how: tmt

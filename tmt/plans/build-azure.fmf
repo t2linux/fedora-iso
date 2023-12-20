@@ -1,0 +1,8 @@
+summary: Build Azure image
+discover:
+    how: fmf
+environment:
+    image_type: oem
+    image_profile: Cloud-Azure
+execute:
+    how: tmt

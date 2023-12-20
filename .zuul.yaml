@@ -1,0 +1,26 @@
+---
+- job:
+    name: build-images-x86_64
+    parent: tmt-test
+    vars:
+      tmt_url: "https://pagure.io/{{ zuul.project.name }}"
+      tmt_ref: "{{ zuul.ref }}"
+      distro: fedora-rawhide
+      compose: Fedora-latest
+      tf_arch: x86_64
+
+- job:
+    name: build-images-aarch64
+    parent: tmt-test
+    vars:
+      tmt_url: "https://pagure.io/{{ zuul.project.name }}"
+      tmt_ref: "{{ zuul.ref }}"
+      distro: fedora-rawhide
+      compose: Fedora-latest
+      tf_arch: aarch64
+
+- project:
+   check:
+    jobs:
+      - build-images-x86_64
+      - build-images-aarch64
