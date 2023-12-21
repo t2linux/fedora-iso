@@ -3,8 +3,3 @@
 # Set ESP mount options to match what Fedora does
 # https://github.com/OSInside/kiwi/issues/2201
 gawk -i inplace '$2 == "/boot/efi" { $4 = $4",umask=0077,shortname=winnt" } { print $0 }' /etc/fstab
-
-# Run selinux relabel at the right time
-# https://github.com/OSInside/kiwi/issues/2192
-# https://github.com/OSInside/kiwi/pull/2282#issuecomment-1514399308
-setfiles -F -p -c /etc/selinux/targeted/policy/policy.* -e /proc -e /sys -e /dev /etc/selinux/targeted/contexts/files/file_contexts /
