@@ -8,9 +8,9 @@ All changes should be made via the PR workflow.
 
 ## Image variants
 
-* Cloud Edition (image type: `oem`, image profiles: `Cloud-OpenStack`/`Cloud-AmazonEC2`/`Cloud-Azure`/`Cloud-GCE`/`Cloud-Oracle`)
+* Base Cloud Edition for clouds (image type: `oem`, image profiles: `Cloud-Base-Generic`/`Cloud-Base-AmazonEC2`/`Cloud-Base-Azure`/`Cloud-Base-GCE`)
+* Base Cloud Edition for Vagrant (image type: `oem`, image profiles: `Cloud-Base-Vagrant-libvirt`/`Cloud-Base-Vagrant-VirtualBox`)
 * KDE Spin (image type: `iso`, image profiles: `KDE-Live`)
-* Vagrant Cloud Edition (image type: `oem`, image profiles: `Vagrant-libvirt`/`Vagrant-VirtualBox`)
 * Workstation Edition (image type: `iso`, image profiles: `Workstation-Live`)
 
 ## Image build quickstart

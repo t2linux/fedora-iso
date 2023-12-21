@@ -1,4 +1,4 @@
-summary: Build Vagrant image for VirtualBox
+summary: Build base Vagrant image for VirtualBox
 discover:
     how: fmf
 adjust:
@@ -6,6 +6,6 @@ adjust:
     when: arch != x86_64
 environment:
     image_type: oem
-    image_profile: Vagrant-VirtualBox
+    image_profile: Cloud-Base-Vagrant-VirtualBox
 execute:
     how: tmt

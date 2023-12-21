@@ -3,23 +3,26 @@
 		<profile name="CloudCore" description="Cloud spin core packages">
 			<requires profile="BootCore"/>
 		</profile>
-		<profile name="Cloud-Azure" description="Azure Guest Image">
+		<profile name="Cloud-Base-Azure" description="Azure Base Guest Image">
 			<requires profile="CloudCore"/>
 		</profile>
-		<profile name="Cloud-AmazonEC2" description="Amazon EC2 HVM Guest Image">
+		<profile name="Cloud-Base-AmazonEC2" description="Amazon EC2 HVM Base Guest Image">
 			<requires profile="CloudCore"/>
 		</profile>
-		<profile name="Cloud-GCE" description="GCE Guest Image">
+		<profile name="Cloud-Base-GCE" description="GCE Base Guest Image">
 			<requires profile="CloudCore"/>
 		</profile>
-		<profile name="Cloud-OpenStack" description="OpenStack Guest Image">
+		<profile name="Cloud-Base-Generic" description="Generic Base Guest Image">
 			<requires profile="CloudCore"/>
 		</profile>
-		<profile name="Cloud-Oracle" description="Oracle Cloud Guest Image">
-			<requires profile="Cloud-OpenStack"/>
+		<profile name="Cloud-Base-OpenStack" description="OpenStack Base Guest Image">
+			<requires profile="Cloud-Base-Generic"/>
+		</profile>
+		<profile name="Cloud-Base-Oracle" description="Oracle Cloud Base Guest Image">
+			<requires profile="Cloud-Base-Generic"/>
 		</profile>
 	</profiles>
-	<preferences profiles="Cloud-Azure">
+	<preferences profiles="Cloud-Base-Azure">
 		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8" devicepersistency="by-uuid" formatoptions="force_size" format="vhd-fixed" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
 			<bootloader name="grub2" console="serial" timeout="0"/>
 			<systemdisk>
@@ -33,7 +36,7 @@
 			</oemconfig>
 		</type>
 	</preferences>
-	<preferences profiles="Cloud-AmazonEC2">
+	<preferences profiles="Cloud-Base-AmazonEC2">
 		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8" devicepersistency="by-uuid" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
 			<bootloader name="grub2" timeout="0"/>
 			<size unit="G">5</size>
@@ -47,7 +50,7 @@
 			</oemconfig>
 		</type>
 	</preferences>
-	<preferences profiles="Cloud-GCE">
+	<preferences profiles="Cloud-Base-GCE">
 		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check net.ifnames=0 console=ttyS0,38400n8d" devicepersistency="by-uuid" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" format="gce" firmware="uefi" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
 			<bootloader name="grub2" timeout="0"/>
 			<size unit="G">5</size>
@@ -61,7 +64,7 @@
 			</oemconfig>
 		</type>
 	</preferences>
-	<preferences profiles="Cloud-OpenStack">
+	<preferences profiles="Cloud-Base-Generic">
 		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8" devicepersistency="by-uuid" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi" format="qcow2" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
 			<bootloader name="grub2" timeout="0"/>
 			<size unit="G">5</size>
@@ -87,18 +90,18 @@
 		<package name="python3-dnf-plugin-tracer"/>
 		<package name="glibc-langpack-en"/>
 	</packages>
-	<packages type="image" patternType="plusRecommended" profiles="Cloud-Azure">
+	<packages type="image" patternType="plusRecommended" profiles="Cloud-Base-Azure">
 		<package name="WALinuxAgent"/>
 	</packages>
-	<packages type="image" patternType="plusRecommended" profiles="Cloud-GCE">
+	<packages type="image" patternType="plusRecommended" profiles="Cloud-Base-GCE">
 		<package name="google-compute-engine-guest-configs"/>
 		<package name="google-compute-engine-oslogin"/>
 		<package name="google-guest-agent"/>
 	</packages>
-	<packages type="image" patternType="plusRecommended" profiles="Cloud-OpenStack">
+	<packages type="image" patternType="plusRecommended" profiles="Cloud-Base-Generic">
 		<package name="qemu-guest-agent"/>
 	</packages>
-	<packages type="uninstall" profiles="Cloud-GCE">
+	<packages type="uninstall" profiles="Cloud-Base-GCE">
 		<package name="cloud-init"/>
 	</packages>
 </image>

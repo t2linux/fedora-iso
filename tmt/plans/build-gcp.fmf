@@ -1,8 +1,0 @@
-summary: Build GCP image
-discover:
-    how: fmf
-environment:
-    image_type: oem
-    image_profile: Cloud-GCE
-execute:
-    how: tmt

@@ -1,8 +1,8 @@
-summary: Build OpenStack image
+summary: Build Generic base image
 discover:
     how: fmf
 environment:
     image_type: oem
-    image_profile: Cloud-OpenStack
+    image_profile: Cloud-Base-Generic
 execute:
     how: tmt

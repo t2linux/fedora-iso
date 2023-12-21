@@ -1,8 +1,8 @@
-summary: Build Vagrant image for libvirt
+summary: Build GCP base image
 discover:
     how: fmf
 environment:
     image_type: oem
-    image_profile: Vagrant-libvirt
+    image_profile: Cloud-Base-GCE
 execute:
     how: tmt
