@@ -8,4 +8,5 @@ framework: shell
 path: /
 test: |
   ./kiwi-build --debug --image-type="$image_type" --image-profile="$image_profile" --kiwi-description-dir="${TMT_TREE}" --output-dir="${TMT_TEST_DATA}"
+  rm -rf "${TMT_TEST_DATA}/build/image-root"
 duration: 60m
