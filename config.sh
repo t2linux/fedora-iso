@@ -16,8 +16,10 @@ echo "Configure image: [$kiwi_iname]-[$kiwi_profiles]..."
 #======================================
 # Set SELinux booleans
 #--------------------------------------
-## Fixes KDE Plasma, see rhbz#2058657
-setsebool -P selinuxuser_execmod 1
+if [[ "$kiwi_profiles" != *"Container"* ]]; then
+	## Fixes KDE Plasma, see rhbz#2058657
+	setsebool -P selinuxuser_execmod 1
+fi
 
 #======================================
 # Clear machine specific configuration
@@ -31,13 +33,15 @@ rm -f /var/lib/systemd/random-seed
 #======================================
 # Configure grub correctly
 #--------------------------------------
-## Works around issues with grub-bls
-## See: https://github.com/OSInside/kiwi/issues/2198
-echo "GRUB_DEFAULT=saved" >> /etc/default/grub
-## Disable submenus to match Fedora
-echo "GRUB_DISABLE_SUBMENU=true" >> /etc/default/grub
-## Disable recovery entries to match Fedora
-echo "GRUB_DISABLE_RECOVERY=true" >> /etc/default/grub
+if [[ "$kiwi_profiles" != *"Container"* ]]; then
+	## Works around issues with grub-bls
+	## See: https://github.com/OSInside/kiwi/issues/2198
+	echo "GRUB_DEFAULT=saved" >> /etc/default/grub
+	## Disable submenus to match Fedora
+	echo "GRUB_DISABLE_SUBMENU=true" >> /etc/default/grub
+	## Disable recovery entries to match Fedora
+	echo "GRUB_DISABLE_RECOVERY=true" >> /etc/default/grub
+fi
 
 #======================================
 # Delete & lock the root user password
@@ -64,10 +68,12 @@ fi
 #======================================
 # Setup default target
 #--------------------------------------
-if [[ "$kiwi_profiles" == *"GNOME"* ]] || [[ "$kiwi_profiles" == *"KDE"* ]]; then
-	systemctl set-default graphical.target
-else
-	systemctl set-default multi-user.target
+if [[ "$kiwi_profiles" != *"Container"* ]]; then
+	if [[ "$kiwi_profiles" == *"GNOME"* ]] || [[ "$kiwi_profiles" == *"KDE"* ]]; then
+		systemctl set-default graphical.target
+	else
+		systemctl set-default multi-user.target
+	fi
 fi
 
 #======================================
@@ -116,6 +122,74 @@ mkdir -m 0700 -p /root/.ssh
 cp /home/vagrant/.ssh/authorized_keys /root/.ssh/authorized_keys
 chmod 600 /root/.ssh/authorized_keys
 chown -R root:root /root/.ssh
+fi
+
+if [[ "$kiwi_profiles" == *"Container"* ]]; then
+	# Set install langs macro so that new rpms that get installed will
+	# only install langs that we limit it to.
+	LANG="en_US"
+	echo "%_install_langs $LANG" > /etc/rpm/macros.image-language-conf
+
+	# https://bugzilla.redhat.com/show_bug.cgi?id=1727489
+	echo 'LANG="C.UTF-8"' >  /etc/locale.conf
+
+	# https://bugzilla.redhat.com/show_bug.cgi?id=1400682
+	echo "Import RPM GPG key"
+	releasever=$(rpm --eval '%{?fedora}')
+
+	# When building ELN containers, we don't have the %{fedora} macro
+	if [ -z $releasever ]; then
+		releasever=eln
+	fi
+
+	rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$releasever-primary
+
+	echo "# fstab intentionally empty for containers" > /etc/fstab
+
+	# Remove machine-id on pre generated images
+	rm -f /etc/machine-id
+	touch /etc/machine-id
+
+	echo "# resolv placeholder" > /etc/resolv.conf
+	chmod 644 /etc/resolv.conf
+
+	# Remove extraneous files
+	rm -rf /tmp/*
+
+	# https://pagure.io/atomic-wg/issue/308
+	printf "tsflags=nodocs\n" >>/etc/dnf/dnf.conf
+
+	if [[ "$kiwi_profiles" == *"Base-Generic-Minimal"* ]]; then
+		# remove some random help txt files
+		rm -fv /usr/share/gnupg/help*.txt
+
+		# Pruning random things
+		rm /usr/lib/rpm/rpm.daily
+		rm -rfv /usr/lib64/nss/unsupported-tools/  # unsupported
+
+		# Statically linked crap
+		rm -fv /usr/sbin/{glibc_post_upgrade.x86_64,sln}
+		ln /usr/bin/ln usr/sbin/sln
+
+		# Remove some dnf info
+		rm -rfv /var/lib/dnf
+
+		# don't need icons
+		rm -rfv /usr/share/icons/*
+
+		#some random not-that-useful binaries
+		rm -fv /usr/bin/pinky
+
+		# we lose presets by removing /usr/lib/systemd but we do not care
+		rm -rfv /usr/lib/systemd
+	fi
+	if [[ "$kiwi_profiles" == *"Toolbox"* ]]; then
+		# Remove macros.image-language-conf file
+		rm -f /etc/rpm/macros.image-language-conf
+
+		# Remove 'tsflags=nodocs' line from dnf.conf
+		sed -i '/tsflags=nodocs/d' /etc/dnf/dnf.conf
+	fi
 fi
 
 exit 0

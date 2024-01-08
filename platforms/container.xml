@@ -1,0 +1,149 @@
+<image>
+	<profiles>
+		<profile name="ContainerCore" description="Container core packages">
+		</profile>
+		<profile name="Container-Base-Generic-Minimal" description="Generic Minimal Base Container Image">
+			<requires profile="ContainerCore"/>
+		</profile>
+		<profile name="Container-Base-Generic" description="Generic Base Container Image">
+			<requires profile="ContainerCore"/>
+		</profile>
+		<profile name="Container-Toolbox" description="Toolbox Container Image">
+			<requires profile="ContainerCore"/>
+		</profile>
+	</profiles>
+	<preferences profiles="Container-Base-Generic-Minimal,Container-Base-Generic">
+		<type image="tbz"/>
+		<timezone>Etc/UTC</timezone>
+		<locale>en_US</locale>
+		<rpm-locale-filtering>true</rpm-locale-filtering>
+		<rpm-excludedocs>true</rpm-excludedocs>
+	</preferences>
+	<preferences profiles="Container-Toolbox">
+		<type image="tbz"/>
+		<timezone>Etc/UTC</timezone>
+		<locale>en_US</locale>
+		<rpm-locale-filtering>false</rpm-locale-filtering>
+		<rpm-excludedocs>false</rpm-excludedocs>
+	</preferences>
+	<packages type="bootstrap" profiles="ContainerCore">
+		<ignore name="dosfstools"/>
+		<ignore name="e2fsprogs"/>
+		<ignore name="fuse-libs"/>
+		<ignore name="gnupg2-smime"/>
+		<ignore name="libss"/> <!-- used by e2fsprogs -->
+		<ignore name="kernel"/>
+		<ignore name="*-firmware"/>
+		<ignore name="geolite2-city"/>
+		<ignore name="geolite2-country"/>
+		<ignore name="pinentry"/>
+		<ignore name="shared-mime-info"/>
+		<ignore name="pinentry"/>
+		<ignore name="trousers"/>
+		<ignore name="xkeyboard-config"/>
+		<ignore name="grubby"/>
+		<ignore name="langpacks-en_GB"/>
+		<!-- https://bugzilla.redhat.com/show_bug.cgi?id=1951111 -->
+		<ignore name="util-linux"/>
+		<ignore name="sssd-client"/>
+		<package name="fedora-release-container"/>
+		<package name="bash"/>
+		<package name="coreutils"/>
+		<package name="rpm"/>
+	</packages>
+	<packages type="bootstrap" profiles="Container-Base-Generic-Minimal">
+		<ignore name="glibc-langpack-en"/>
+		<ignore name="langpacks-en"/>
+		<ignore name="tzdata"/>
+		<package name="microdnf"/>
+		<package name="glibc-minimal-langpack"/>
+	</packages>
+	<packages type="bootstrap" profiles="Container-Base-Generic">
+		<ignore name="glibc-langpack-en"/>
+		<ignore name="langpacks-en"/>
+		<package name="rootfiles"/>
+		<package name="tar"/> <!-- https://bugzilla.redhat.com/show_bug.cgi?id=1409920 -->
+		<package name="vim-minimal"/>
+		<package name="dnf"/>
+		<package name="dnf-yum"/> <!-- https://pagure.io/fesco/issue/1312#comment-30991 -->
+		<package name="glibc-minimal-langpack"/>
+		<package name="tzdata"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="Container-Toolbox">
+		<!-- This is a weak dep of systemd, we do not want this in the container;
+		     see: https://github.com/containers/toolbox/issues/1410  -->
+		<ignore name="systemd-resolved"/>
+		<package name="acl"/>
+		<package name="bash"/>
+		<package name="bash-completion"/>
+		<package name="bc"/>
+		<package name="bzip2"/>
+		<package name="coreutils-common"/>
+		<package name="curl"/>
+		<package name="default-editor"/>
+		<package name="diffutils"/>
+		<package name="dnf"/>
+		<package name="dnf-yum"/> <!-- https://pagure.io/fesco/issue/1312#comment-30991 -->
+		<package name="dnf-plugins-core"/>
+		<package name="findutils"/>
+		<package name="flatpak-spawn"/>
+		<package name="fpaste"/>
+		<package name="gawk"/>
+		<package name="git"/>
+		<package name="glibc-all-langpacks"/>
+		<package name="gnupg2"/>
+		<package name="gnupg2-smime"/>
+		<package name="grep"/>
+		<package name="gvfs-client"/>
+		<package name="gzip"/>
+		<package name="hostname"/>
+		<package name="iproute"/>
+		<package name="iputils"/>
+		<package name="keyutils"/>
+		<package name="krb5-libs"/>
+		<package name="less"/>
+		<package name="libcap"/>
+		<package name="lsof"/>
+		<package name="man-db"/>
+		<package name="man-pages"/>
+		<package name="mesa-dri-drivers"/>
+		<package name="mesa-va-drivers"/>
+		<package name="mesa-vulkan-drivers"/>
+		<package name="mtr"/>
+		<package name="nss-mdns"/>
+		<package name="openssh-clients"/>
+		<package name="openssl"/>
+		<package name="p11-kit"/>
+		<package name="pam"/>
+		<package name="passwd"/>
+		<package name="pigz"/>
+		<package name="procps-ng"/>
+		<package name="psmisc"/>
+		<package name="python3"/>
+		<package name="rootfiles"/>
+		<package name="rsync"/>
+		<package name="sed"/>
+		<package name="shadow-utils"/>
+		<package name="sudo"/>
+		<package name="tar"/> <!-- https://bugzilla.redhat.com/show_bug.cgi?id=1409920 -->
+		<package name="tcpdump"/>
+		<package name="time"/>
+		<package name="traceroute"/>
+		<package name="tree"/>
+		<package name="tzdata"/>
+		<package name="unzip"/>
+		<package name="util-linux"/>
+		<package name="util-linux-core"/>
+		<package name="vim-enhanced"/>
+		<package name="vte-profile"/>
+		<package name="vulkan-loader"/>
+		<package name="wget"/>
+		<package name="which"/>
+		<package name="whois"/>
+		<package name="words"/>
+		<package name="xorg-x11-xauth"/>
+		<package name="xz"/>
+		<package name="zip"/>
+		<package name="zstd"/>
+	</packages>
+</image>

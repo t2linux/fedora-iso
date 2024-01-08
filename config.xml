@@ -20,6 +20,7 @@
 	<include from="this://./components/liveinstall.xml"/>
 	<include from="this://./components/users.xml"/>
 	<include from="this://./platforms/cloud.xml"/>
+	<include from="this://./platforms/container.xml"/>
 	<include from="this://./platforms/vagrant.xml"/>
 	<include from="this://./platforms/workstation.xml"/>
 	<packages type="bootstrap">

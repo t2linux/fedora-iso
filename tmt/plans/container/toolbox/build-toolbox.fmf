@@ -1,0 +1,8 @@
+summary: Build Toolbox container image
+discover:
+    how: fmf
+environment:
+    image_type: tbz
+    image_profile: Container-Toolbox
+execute:
+    how: tmt
