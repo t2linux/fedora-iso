@@ -8,5 +8,41 @@
 			<requires profile="KDE-Desktop"/>
 			<requires profile="LiveInstall"/>
 		</profile>
+		<profile name="Budgie-Live" description="Budgie Spin Live DVD">
+			<requires profile="Budgie-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="Cinnamon-Live" description="Cinnamon Spin Live DVD">
+			<requires profile="Cinnamon-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="i3-Live" description="i3 Spin Live DVD">
+			<requires profile="i3-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="LXDE-Live" description="LXDE Spin Live DVD">
+			<requires profile="LXDE-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="LXQt-Live" description="LXQt Spin Live DVD">
+			<requires profile="LXQt-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="MATE_Compiz-Live" description="MATE-Compiz Spin Live DVD">
+			<requires profile="MATE_Compiz-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="SoaS-Live" description="Sugar on a Stick Live DVD">
+			<requires profile="SoaS-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="Sway-Live" description="Sway Spin Live DVD">
+			<requires profile="Sway-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+		<profile name="Xfce-Live" description="Xfce Spin Live DVD">
+			<requires profile="Xfce-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
 	</profiles>
 </image>
