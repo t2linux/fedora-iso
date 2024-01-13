@@ -18,12 +18,16 @@
 		<namedCollection name="print-client"/>
 		<namedCollection name="guest-desktop-agents"/>
 		<namedCollection name="standard"/>
+		<ignore name="gfs2-utils"/>
+		<ignore name="reiserfs-utils"/>
 	</packages>
 	<packages type="image" patternType="plusRecommended" profiles="GNOME-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
 		<namedCollection name="workstation-product-environment"/>
 		<package name="fedora-release-workstation"/>
 	</packages>
 	<packages type="image" patternType="plusRecommended" profiles="KDE-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
 		<namedCollection name="kde-desktop-environment"/>
 		<namedCollection name="kde-apps"/>
 		<namedCollection name="kde-media"/>
@@ -34,5 +38,127 @@
 		<ignore name="@admin-tools"/>
 		<ignore name="gnome-disk-utility"/>
 		<ignore name="system-config-printer"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="Budgie-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="budgie-desktop-environment"/>
+		<namedCollection name="budgie-desktop-apps"/>
+		<namedCollection name="libreoffice"/>
+		<package name="fedora-release-budgie"/>
+		<package name="libreoffice-draw"/>
+		<package name="libreoffice-math"/>
+		<package name="thunderbird"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="Cinnamon-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="cinnamon-desktop-environment"/>
+		<namedCollection name="libreoffice"/>
+		<package name="fedora-release-cinnamon"/>
+		<package name="rhythmbox"/>
+		<package name="f39-backgrounds-extras-gnome"/> <!-- extra backgrounds -->
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="i3-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="i3-desktop-environment"/>
+		<namedCollection name="admin-tools"/>
+		<package name="dex-autostart"/>
+		<package name="fedora-release-i3"/>
+		<package name="feh"/>
+		<package name="gnome-keyring-pam"/> <!-- unlock default keyring, FIXME: put in comps -->
+		<package name="system-config-printer"/> <!-- FIXME: put in comps -->
+		<package name="thunar"/> <!-- FIXME: put in comps -->
+		<package name="xfce-polkit"/> <!-- FIXME: put in comps -->
+		<package name="wget"/> <!-- FIXME: put in comps -->
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="LXDE-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="lxde-desktop-environment"/>
+		<namedCollection name="lxde-apps"/>
+		<namedCollection name="lxde-media"/>
+		<namedCollection name="lxde-office"/>
+		<package name="fedora-release-lxde"/>
+		<package name="lxpolkit"/> <!-- Ensure LXDE polkit agent is used -->
+		<package name="notification-daemon"/> <!-- Ensure correct notification daemon is used -->
+		<ignore name="PackageKit*"/> <!-- we use dnfdragora instead -->
+		<ignore name="fprintd-pam"/> <!-- pam-fprint causes segfaults in LXDM -->
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="LXQt-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="lxqt-desktop-environment"/>
+		<namedCollection name="lxqt-apps"/>
+		<namedCollection name="lxqt-media"/>
+		<namedCollection name="lxqt-l10n"/>
+		<package name="fedora-release-lxqt"/>
+		<package name="lximage-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->
+		<package name="obconf-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->
+		<package name="pavucontrol-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->
+		<package name="enki"/> <!-- FIXME: put in comps -->
+		<package name="udisks2"/> <!-- Fix https://bugzilla.redhat.com/show_bug.cgi?id=1429132 -->
+		<!-- remove unneeded stuff for a lightweight system -->
+		<package name="wqy-microhei-fonts"/> <!-- compact CJK font -->
+		<ignore name="naver-nanum-gothic-fonts"/> <!-- Korean: replaced by above -->
+		<ignore name="vlgothic-fonts"/> <!-- Japanese: replaced by above -->
+		<ignore name="adobe-source-han-sans-cn-fonts"/> <!-- Simplified Chinese: replaced by above -->
+		<ignore name="adobe-source-han-sans-tw-fonts"/> <!-- Traditional Chinese: replaced by above -->
+		<ignore name="pt-sans-fonts"/> <!-- Cyrillic (already supported by DejaVu) -->
+		<ignore name="@input-methods"/>
+		<ignore name="@admin-tools"/>
+		<ignore name="scim*"/>
+		<ignore name="m17n*"/>
+		<ignore name="iok"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="MATE_Compiz-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="mate-desktop-environment"/>
+		<namedCollection name="compiz"/>
+		<namedCollection name="libreoffice"/>
+		<package name="fedora-release-matecompiz"/>
+		<package name="earlyoom"/> <!-- replaces systemd-oomd-defaults -->
+		<ignore name="systemd-oomd-defaults"/> <!-- replaced by earlyoom, see rhbz#2068699 and rhbz#1933494 -->
+		<ignore name="audacious"/> <!-- breaks the desktop -->
+		<!-- drop things for size -->
+		<ignore name="@3d-printing"/>
+		<ignore name="@admin-tools"/>
+		<ignore name="@mate-applications"/>
+		<ignore name="brasero"/>
+		<ignore name="fedora-icon-theme"/>
+		<ignore name="gnome-icon-theme"/>
+		<ignore name="gnome-icon-theme-symbolic"/>
+		<ignore name="gnome-logs"/>
+		<ignore name="gnome-software"/>
+		<ignore name="gnome-user-docs"/>
+		<ignore name="evolution-help"/>
+		<ignore name="telnet"/> <!-- Legacy cmdline thing we don't want -->
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="Phosh-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="phosh-desktop-environment"/>
+		<package name="fedora-release-phosh"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="Sway-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="sway-desktop-environment"/>
+		<namedCollection name="firefox"/>
+		<namedCollection name="swaywm-extended"/>
+		<package name="fedora-release-sway"/>
+	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="Xfce-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="xfce-desktop-environment"/>
+		<namedCollection name="xfce-apps"/>
+		<namedCollection name="xfce-extra-plugins"/>
+		<namedCollection name="xfce-media"/>
+		<namedCollection name="xfce-office"/>
+		<package name="fedora-release-xfce"/>
+		<package name="wget"/>
+		<package name="system-config-printer"/>
+		<!-- Save some space -->
+		<ignore name="autofs"/>
+		<ignore name="acpid"/>
+		<ignore name="gimp-help"/>
+		<ignore name="desktop-backgrounds-basic"/>
+		<ignore name="aspell-*"/> <!-- dictionaries are big -->
+		<ignore name="xfce4-sensors-plugin"/>
+		<ignore name="xfce4-eyes-plugin"/>
 	</packages>
 </image>
