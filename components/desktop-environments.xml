@@ -135,6 +135,28 @@
 		<namedCollection name="phosh-desktop-environment"/>
 		<package name="fedora-release-phosh"/>
 	</packages>
+	<packages type="image" patternType="plusRecommended" profiles="SoaS-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="sugar-desktop-environment"/>
+		<package name="fedora-release-soas"/>
+		<package name="dejavu-sans-fonts"/>
+		<package name="dejavu-sans-mono-fonts"/>
+		<package name="madan-fonts"/>
+		<package name="aajohan-comfortaa-fonts"/>
+		<package name="sil-abyssinica-fonts"/>
+		<package name="vlgothic-fonts"/>
+		<package name="rp-pppoe"/> <!-- See http://bugs.sugarlabs.org/ticket/1951 -->
+		<package name="livecd-tools"/> <!-- See http://bugs.sugarlabs.org/ticket/74 -->
+		<package name="xfce-polkit"/>
+		<ignore name="@gnome-desktop"/>
+		<ignore name="firefox"/>
+		<ignore name="ibus*"/>
+		<ignore name="openbox"/>
+		<ignore name="PackageKit"/>
+		<!-- Drop these to allow the Sugar boot screen -->
+		<ignore name="plymouth-system-theme"/>
+		<ignore name="plymouth-theme-charge"/>
+	</packages>
 	<packages type="image" patternType="plusRecommended" profiles="Sway-Desktop">
 		<!-- install env-group to resolve RhBug:1891500 -->
 		<namedCollection name="sway-desktop-environment"/>
