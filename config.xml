@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="7.4" name="Fedora-Linux">
+<image schemaversion="7.4" name="Fedora">
 	<description type="system">
 		<author>Fedora Project Contributors</author>
 		<contact>devel@lists.fedoraproject.org</contact>
