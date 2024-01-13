@@ -27,6 +27,7 @@
 		<namedCollection name="kde-desktop-environment"/>
 		<namedCollection name="kde-apps"/>
 		<namedCollection name="kde-media"/>
+		<namedCollection name="kde-spin-initial-setup"/>
 		<package name="fuse"/>
 		<package name="fedora-release-kde"/>
 		<package name="kde-l10n"/>
