@@ -63,8 +63,32 @@ if [[ "$kiwi_profiles" == *"Live"* ]]; then
 	if [[ "$kiwi_profiles" == *"KDE"* ]]; then
 		echo 'livesys_session="kde"' > /etc/sysconfig/livesys
 	fi
+	if [[ "$kiwi_profiles" == *"Budgie"* ]]; then
+		echo 'livesys_session="budgie"' > /etc/sysconfig/livesys
+	fi
+	if [[ "$kiwi_profiles" == *"Cinnamon"* ]]; then
+		echo 'livesys_session="cinnamon"' > /etc/sysconfig/livesys
+	fi
+	if [[ "$kiwi_profiles" == *"i3"* ]]; then
+		echo 'livesys_session="i3"' > /etc/sysconfig/livesys
+	fi
+	if [[ "$kiwi_profiles" == *"LXDE"* ]]; then
+		echo 'livesys_session="lxde"' > /etc/sysconfig/livesys
+	fi
+	if [[ "$kiwi_profiles" == *"LXQt"* ]]; then
+		echo 'livesys_session="lxqt"' > /etc/sysconfig/livesys
+	fi
+	if [[ "$kiwi_profiles" == *"MATE_Compiz"* ]]; then
+		echo 'livesys_session="mate"' > /etc/sysconfig/livesys
+	fi
+	if [[ "$kiwi_profiles" == *"Sway"* ]]; then
+		echo 'livesys_session="sway"' > /etc/sysconfig/livesys
+	fi
 	if [[ "$kiwi_profiles" == *"SoaS"* ]]; then
 		echo 'livesys_session="soas"' > /etc/sysconfig/livesys
+	fi
+	if [[ "$kiwi_profiles" == *"Xfce"* ]]; then
+		echo 'livesys_session="xfce"' > /etc/sysconfig/livesys
 	fi
 fi
 
@@ -72,7 +96,7 @@ fi
 # Setup default target
 #--------------------------------------
 if [[ "$kiwi_profiles" != *"Container"* ]]; then
-	if [[ "$kiwi_profiles" == *"GNOME"* ]] || [[ "$kiwi_profiles" == *"KDE"* ]]; then
+	if [[ "$kiwi_profiles" == *"Desktop"* ]]; then
 		systemctl set-default graphical.target
 	else
 		systemctl set-default multi-user.target
