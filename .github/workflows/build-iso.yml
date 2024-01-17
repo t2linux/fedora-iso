@@ -1,0 +1,49 @@
+name: Build ISO
+
+on:
+  push:
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Increase Disk Space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+          sudo docker image prune --all --force
+          sudo rm -rf /home/linuxbrew
+          sudo apt-get remove -y --purge fonts-noto-color-emoji subversion \
+              sshpass g++ gcc gnupg2 imagemagick jq libmagic-dev \
+              libmagickcore-dev	libmagickwand-dev	libssl-dev \
+              mercurial openssh-client p7zip-full	ftp bison
+          sudo apt-get autoremove -y
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+
+      - name: Build ISO
+        run: |
+          docker run \
+            --privileged \
+            -v "$PWD":/repo \
+            ghcr.io/t2linux/fedora-dev:latest \
+            /repo/build.sh
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: fedora-iso
+          path: builddir/iso/*
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: |
+            builddir/iso/*
