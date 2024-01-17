@@ -1,7 +1,11 @@
 <image>
 	<profiles>
-		<profile name="BootCore" description="Boot core packages"/>
-		<profile name="BootCoreUKI" description="Boot core packages for UKI"/>
+		<profile name="BootCore" description="Boot core packages">
+			<requires profile="t2linux"/>
+		</profile>
+		<profile name="BootCoreUKI" description="Boot core packages for UKI">
+			<requires profile="t2linux"/>
+		</profile>
 	</profiles>
 	<packages type="bootstrap" patternType="plusRecommended" profiles="BootCore,BootCoreUKI">
 		<package name="grubby"/>
