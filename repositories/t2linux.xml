@@ -1,0 +1,7 @@
+<image>
+  <repository type="rpm-md" alias="copr_copr.fedorainfracloud.org_sharpenedblade_t2linux" sourcetype="baseurl" priority="80">
+    <source path="https://download.copr.fedorainfracloud.org/results/sharpenedblade/t2linux/fedora-$releasever-$basearch/">
+      <signing key="https://download.copr.fedorainfracloud.org/results/sharpenedblade/t2linux/pubkey.gpg"/>
+    </source>
+  </repository>
+</image>
