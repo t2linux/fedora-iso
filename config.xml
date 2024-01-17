@@ -2,9 +2,9 @@
 
 <image schemaversion="7.4" name="Fedora">
 	<description type="system">
-		<author>Fedora Project Contributors</author>
-		<contact>devel@lists.fedoraproject.org</contact>
-		<specification>Fedora Linux</specification>
+		<author>Fedora Project Contributors and the t2linux project</author>
+		<contact>sharpenedblade@proton.me</contact>
+		<specification>t2linux Fedora</specification>
 	</description>
 	<preferences>
 		<version>40</version>
@@ -15,6 +15,7 @@
 		<release-version>40</release-version>
 	</preferences>
 	<include from="this://./repositories/core.xml"/>
+	<include from="this://./repositories/t2linux.xml"/>
 	<include from="this://./components/boot.xml"/>
 	<include from="this://./components/desktops/common.xml"/>
 	<include from="this://./components/desktops/gnome.xml"/>
@@ -31,6 +32,7 @@
 	<include from="this://./components/desktops/budgie.xml"/>
 	<include from="this://./components/liveinstall.xml"/>
 	<include from="this://./components/users.xml"/>
+	<include from="this://./components/t2linux.xml"/>
 	<include from="this://./teams/cloud/cloud.xml"/>
 	<include from="this://./teams/cloud/container.xml"/>
 	<include from="this://./teams/cloud/vagrant.xml"/>

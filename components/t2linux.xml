@@ -1,0 +1,12 @@
+<image>
+  <profiles>
+    <profile name="t2linux" description="t2linux support packages"/>
+  </profiles>
+  <packages type="image" patternType="plusRecommended">
+    <package name="t2linux-config"/>
+    <package name="copr-sharpenedblade-t2linux-release"/>
+  </packages>
+  <packages type="bootstrap" patternType="plusRecommended">
+    <package name="copr-sharpenedblade-t2linux-release"/>
+  </packages>
+</image>
