@@ -1,0 +1,8 @@
+summary: Build UEFI UKI base image
+discover:
+    how: fmf
+environment:
+    image_type: oem
+    image_profile: Cloud-Base-UEFI-UKI
+execute:
+    how: tmt
