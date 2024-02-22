@@ -117,6 +117,9 @@ cat >> /etc/chrony.conf << EOF
 # https://docs.microsoft.com/en-us/azure/virtual-machines/linux/time-sync#check-for-ptp-clock-source
 refclock PHC /dev/ptp_hyperv poll 3 dpoll -2 offset 0
 EOF
+
+# Enable the Azure Linux Agent service
+systemctl enable waagent.service
 fi
 
 if [[ "$kiwi_profiles" == *"GCE"* ]]; then
