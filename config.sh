@@ -118,6 +118,15 @@ cat >> /etc/chrony.conf << EOF
 refclock PHC /dev/ptp_hyperv poll 3 dpoll -2 offset 0
 EOF
 
+# Support Azure's accelerated networking feature; without this the network fails
+# to come up. It may need adjustments for additional drivers in the future.
+cat > /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf << EOF
+# Ignore SR-IOV interface on Azure, since it's transparently bonded
+# to the synthetic interface
+[keyfile]
+unmanaged-devices=driver:mlx4_core;driver:mlx5_core
+EOF
+
 # Enable the Azure Linux Agent service
 systemctl enable waagent.service
 fi
