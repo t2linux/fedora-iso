@@ -133,6 +133,7 @@
 	<packages type="image" patternType="plusRecommended" profiles="Cloud-Base-Azure">
 		<package name="WALinuxAgent"/>
 		<package name="kernel-modules"/>
+		<package name="hyperv-daemons"/>
 	</packages>
 	<packages type="image" patternType="plusRecommended" profiles="Cloud-Base-GCE">
 		<package name="google-compute-engine-guest-configs"/>
