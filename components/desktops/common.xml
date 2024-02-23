@@ -1,0 +1,18 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="DesktopCommon">
+		<namedCollection name="internet-browser"/>
+		<namedCollection name="fonts"/>
+		<namedCollection name="multimedia"/>
+		<namedCollection name="networkmanager-submodules"/>
+		<namedCollection name="office-suite"/>
+		<namedCollection name="hardware-support"/>
+		<namedCollection name="print-client"/>
+		<namedCollection name="guest-desktop-agents"/>
+		<namedCollection name="standard"/>
+		<ignore name="gfs2-utils"/>
+		<ignore name="reiserfs-utils"/>
+	</packages>
+</image>

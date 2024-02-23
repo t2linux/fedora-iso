@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="i3-Live" description="i3 Spin Live DVD">
+			<requires profile="i3-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>

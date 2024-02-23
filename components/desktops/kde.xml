@@ -1,0 +1,21 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="KDE-Desktop" description="KDE Plasma Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="KDE-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="kde-desktop-environment"/>
+		<namedCollection name="kde-apps"/>
+		<namedCollection name="kde-media"/>
+		<namedCollection name="kde-spin-initial-setup"/>
+		<package name="fuse"/>
+		<package name="fedora-release-kde"/>
+		<package name="kde-l10n"/>
+		<ignore name="@admin-tools"/>
+		<ignore name="gnome-disk-utility"/>
+		<ignore name="system-config-printer"/>
+	</packages>
+</image>

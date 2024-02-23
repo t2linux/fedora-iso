@@ -1,0 +1,15 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="Sway-Desktop" description="Sway Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="Sway-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="sway-desktop-environment"/>
+		<namedCollection name="firefox"/>
+		<namedCollection name="swaywm-extended"/>
+		<package name="fedora-release-sway"/>
+	</packages>
+</image>

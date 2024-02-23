@@ -1,0 +1,21 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="i3-Desktop" description="i3 Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="i3-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="i3-desktop-environment"/>
+		<namedCollection name="admin-tools"/>
+		<package name="dex-autostart"/>
+		<package name="fedora-release-i3"/>
+		<package name="feh"/>
+		<package name="gnome-keyring-pam"/> <!-- unlock default keyring, FIXME: put in comps -->
+		<package name="system-config-printer"/> <!-- FIXME: put in comps -->
+		<package name="thunar"/> <!-- FIXME: put in comps -->
+		<package name="xfce-polkit"/> <!-- FIXME: put in comps -->
+		<package name="wget"/> <!-- FIXME: put in comps -->
+	</packages>
+</image>

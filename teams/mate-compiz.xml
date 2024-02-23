@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="MATE_Compiz-Live" description="MATE-Compiz Spin Live DVD">
+			<requires profile="MATE_Compiz-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>

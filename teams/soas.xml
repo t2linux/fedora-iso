@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="SoaS-Live" description="Sugar on a Stick Live DVD">
+			<requires profile="SoaS-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>

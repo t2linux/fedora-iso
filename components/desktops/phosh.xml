@@ -1,0 +1,13 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="Phosh-Desktop" description="Phosh Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="Phosh-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="phosh-desktop-environment"/>
+		<package name="fedora-release-phosh"/>
+	</packages>
+</image>

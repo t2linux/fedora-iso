@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="Cinnamon-Live" description="Cinnamon Spin Live DVD">
+			<requires profile="Cinnamon-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>

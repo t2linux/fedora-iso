@@ -1,0 +1,27 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="Xfce-Desktop" description="Xfce Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="Xfce-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="xfce-desktop-environment"/>
+		<namedCollection name="xfce-apps"/>
+		<namedCollection name="xfce-extra-plugins"/>
+		<namedCollection name="xfce-media"/>
+		<namedCollection name="xfce-office"/>
+		<package name="fedora-release-xfce"/>
+		<package name="wget"/>
+		<package name="system-config-printer"/>
+		<!-- Save some space -->
+		<ignore name="autofs"/>
+		<ignore name="acpid"/>
+		<ignore name="gimp-help"/>
+		<ignore name="desktop-backgrounds-basic"/>
+		<ignore name="aspell-*"/> <!-- dictionaries are big -->
+		<ignore name="xfce4-sensors-plugin"/>
+		<ignore name="xfce4-eyes-plugin"/>
+	</packages>
+</image>

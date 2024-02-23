@@ -1,0 +1,16 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="Cinnamon-Desktop" description="Cinnamon Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="Cinnamon-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="cinnamon-desktop-environment"/>
+		<namedCollection name="libreoffice"/>
+		<package name="fedora-release-cinnamon"/>
+		<package name="rhythmbox"/>
+		<package name="f39-backgrounds-extras-gnome"/> <!-- extra backgrounds -->
+	</packages>
+</image>

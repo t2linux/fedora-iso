@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="Sway-Live" description="Sway Spin Live DVD">
+			<requires profile="Sway-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>

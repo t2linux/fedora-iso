@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="Budgie-Live" description="Budgie Spin Live DVD">
+			<requires profile="Budgie-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>

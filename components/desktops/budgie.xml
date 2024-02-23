@@ -1,0 +1,17 @@
+<image>
+	<profiles>
+		<profile name="Budgie-Desktop" description="Budgie Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="Budgie-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="budgie-desktop-environment"/>
+		<namedCollection name="budgie-desktop-apps"/>
+		<namedCollection name="libreoffice"/>
+		<package name="fedora-release-budgie"/>
+		<package name="libreoffice-draw"/>
+		<package name="libreoffice-math"/>
+		<package name="thunderbird"/>
+	</packages>
+</image>

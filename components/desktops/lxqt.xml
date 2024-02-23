@@ -1,0 +1,33 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="LXQt-Desktop" description="LXQt Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="LXQt-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="lxqt-desktop-environment"/>
+		<namedCollection name="lxqt-apps"/>
+		<namedCollection name="lxqt-media"/>
+		<namedCollection name="lxqt-l10n"/>
+		<package name="fedora-release-lxqt"/>
+		<package name="lximage-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->
+		<package name="obconf-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->
+		<package name="pavucontrol-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->
+		<package name="enki"/> <!-- FIXME: put in comps -->
+		<package name="udisks2"/> <!-- Fix https://bugzilla.redhat.com/show_bug.cgi?id=1429132 -->
+		<!-- remove unneeded stuff for a lightweight system -->
+		<package name="wqy-microhei-fonts"/> <!-- compact CJK font -->
+		<ignore name="naver-nanum-gothic-fonts"/> <!-- Korean: replaced by above -->
+		<ignore name="vlgothic-fonts"/> <!-- Japanese: replaced by above -->
+		<ignore name="adobe-source-han-sans-cn-fonts"/> <!-- Simplified Chinese: replaced by above -->
+		<ignore name="adobe-source-han-sans-tw-fonts"/> <!-- Traditional Chinese: replaced by above -->
+		<ignore name="pt-sans-fonts"/> <!-- Cyrillic (already supported by DejaVu) -->
+		<ignore name="@input-methods"/>
+		<ignore name="@admin-tools"/>
+		<ignore name="scim*"/>
+		<ignore name="m17n*"/>
+		<ignore name="iok"/>
+	</packages>
+</image>

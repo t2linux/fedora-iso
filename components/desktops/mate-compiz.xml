@@ -1,0 +1,31 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="MATE_Compiz-Desktop" description="MATE_Compiz Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="MATE_Compiz-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="mate-desktop-environment"/>
+		<namedCollection name="compiz"/>
+		<namedCollection name="libreoffice"/>
+		<package name="fedora-release-matecompiz"/>
+		<package name="earlyoom"/> <!-- replaces systemd-oomd-defaults -->
+		<ignore name="systemd-oomd-defaults"/> <!-- replaced by earlyoom, see rhbz#2068699 and rhbz#1933494 -->
+		<ignore name="audacious"/> <!-- breaks the desktop -->
+		<!-- drop things for size -->
+		<ignore name="@3d-printing"/>
+		<ignore name="@admin-tools"/>
+		<ignore name="@mate-applications"/>
+		<ignore name="brasero"/>
+		<ignore name="fedora-icon-theme"/>
+		<ignore name="gnome-icon-theme"/>
+		<ignore name="gnome-icon-theme-symbolic"/>
+		<ignore name="gnome-logs"/>
+		<ignore name="gnome-software"/>
+		<ignore name="gnome-user-docs"/>
+		<ignore name="evolution-help"/>
+		<ignore name="telnet"/> <!-- Legacy cmdline thing we don't want -->
+	</packages>
+</image>

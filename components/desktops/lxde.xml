@@ -1,0 +1,20 @@
+<image>
+	<profiles>
+		<profile name="DesktopCommon" description="Common desktop packages"/>
+		<profile name="LXDE-Desktop" description="LXDE Desktop">
+			<requires profile="DesktopCommon"/>
+		</profile>
+	</profiles>
+	<packages type="image" patternType="plusRecommended" profiles="LXDE-Desktop">
+		<!-- install env-group to resolve RhBug:1891500 -->
+		<namedCollection name="lxde-desktop-environment"/>
+		<namedCollection name="lxde-apps"/>
+		<namedCollection name="lxde-media"/>
+		<namedCollection name="lxde-office"/>
+		<package name="fedora-release-lxde"/>
+		<package name="lxpolkit"/> <!-- Ensure LXDE polkit agent is used -->
+		<package name="notification-daemon"/> <!-- Ensure correct notification daemon is used -->
+		<ignore name="PackageKit*"/> <!-- we use dnfdragora instead -->
+		<ignore name="fprintd-pam"/> <!-- pam-fprint causes segfaults in LXDM -->
+	</packages>
+</image>

@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="LXDE-Live" description="LXDE Spin Live DVD">
+			<requires profile="LXDE-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>

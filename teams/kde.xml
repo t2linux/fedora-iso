@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="KDE-Live" description="KDE Plasma Spin Live DVD">
+			<requires profile="KDE-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>

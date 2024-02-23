@@ -1,0 +1,8 @@
+<image>
+	<profiles>
+		<profile name="Xfce-Live" description="Xfce Spin Live DVD">
+			<requires profile="Xfce-Desktop"/>
+			<requires profile="LiveInstall"/>
+		</profile>
+	</profiles>
+</image>
