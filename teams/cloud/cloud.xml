@@ -29,7 +29,13 @@
 		</profile>
 	</profiles>
 	<preferences profiles="Cloud-Base-Azure">
-		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0" devicepersistency="by-uuid" formatoptions="force_size" format="vhd-fixed" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
+		<type image="oem" format="vhd-fixed" formatoptions="force_size"
+		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
+		      kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0"
+		      devicepersistency="by-uuid"
+		      bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi"
+		      rootfs_label="fedora"
+		      >
 			<bootloader name="grub2" console="serial" timeout="0"/>
 			<systemdisk>
 				<volume name="@root=root"/>
@@ -43,7 +49,13 @@
 		</type>
 	</preferences>
 	<preferences profiles="Cloud-Base-AmazonEC2">
-		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8" devicepersistency="by-uuid" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
+		<type image="oem"
+		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
+		      kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8"
+		      devicepersistency="by-uuid"
+		      bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi"
+		      rootfs_label="fedora"
+		      >
 			<bootloader name="grub2" timeout="0"/>
 			<size unit="G">5</size>
 			<systemdisk>
@@ -57,7 +69,13 @@
 		</type>
 	</preferences>
 	<preferences profiles="Cloud-Base-GCE">
-		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check net.ifnames=0 console=ttyS0,38400n8d" devicepersistency="by-uuid" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" format="gce" firmware="uefi" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
+		<type image="oem" format="gce"
+		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
+		      kernelcmdline="no_timer_check net.ifnames=0 console=ttyS0,38400n8d"
+		      devicepersistency="by-uuid"
+		      bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi"
+		      rootfs_label="fedora"
+		      >
 			<bootloader name="grub2" timeout="0"/>
 			<size unit="G">5</size>
 			<systemdisk>
@@ -71,7 +89,13 @@
 		</type>
 	</preferences>
 	<preferences profiles="Cloud-Base-Generic">
-		<type image="oem" filesystem="btrfs" kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8" devicepersistency="by-uuid" bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi" format="qcow2" fsmountoptions="compress=zstd:1" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" rootfs_label="fedora">
+		<type image="oem" format="qcow2"
+		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
+		      kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8"
+		      devicepersistency="by-uuid"
+		      bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi"
+		      rootfs_label="fedora"
+		      >
 			<bootloader name="grub2" timeout="0"/>
 			<size unit="G">5</size>
 			<systemdisk>
