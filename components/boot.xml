@@ -1,8 +1,6 @@
 <image>
 	<profiles>
 		<profile name="BootCore" description="Boot core packages"/>
-	</profiles>
-	<profiles>
 		<profile name="BootCoreUKI" description="Boot core packages for UKI"/>
 	</profiles>
 	<packages type="image" patternType="plusRecommended" profiles="BootCore">
