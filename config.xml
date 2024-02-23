@@ -7,7 +7,7 @@
 		<specification>Fedora Linux</specification>
 	</description>
 	<preferences>
-		<version>0.0.0</version>
+		<version>Rawhide</version>
 		<packagemanager>dnf</packagemanager>
 		<locale>en_US</locale>
 		<keytable>us</keytable>
