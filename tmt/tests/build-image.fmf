@@ -3,6 +3,8 @@ require:
   - distribution-gpg-keys
   - git-core
   - kiwi
+  - kiwi-systemdeps-containers
+  - kiwi-systemdeps-disk-images
   - libselinux-utils
 framework: shell
 path: /
