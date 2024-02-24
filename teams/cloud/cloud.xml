@@ -28,7 +28,7 @@
 			<requires profile="Cloud-Base-Generic"/>
 		</profile>
 	</profiles>
-	<preferences profiles="Cloud-Base-Azure">
+	<preferences profiles="Cloud-Base-Azure" arch="x86_64,aarch64">
 		<type image="oem" format="vhd-fixed" formatoptions="force_size"
 		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
 		      kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0"
@@ -48,7 +48,7 @@
 			</oemconfig>
 		</type>
 	</preferences>
-	<preferences profiles="Cloud-Base-AmazonEC2">
+	<preferences profiles="Cloud-Base-AmazonEC2" arch="x86_64,aarch64">
 		<type image="oem"
 		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
 		      kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8"
@@ -68,7 +68,7 @@
 			</oemconfig>
 		</type>
 	</preferences>
-	<preferences profiles="Cloud-Base-GCE">
+	<preferences profiles="Cloud-Base-GCE" arch="x86_64,aarch64">
 		<type image="oem" format="gce"
 		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
 		      kernelcmdline="no_timer_check net.ifnames=0 console=ttyS0,38400n8d"
@@ -88,7 +88,7 @@
 			</oemconfig>
 		</type>
 	</preferences>
-	<preferences profiles="Cloud-Base-Generic">
+	<preferences profiles="Cloud-Base-Generic" arch="x86_64,aarch64">
 		<type image="oem" format="qcow2"
 		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
 		      kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8"
@@ -108,7 +108,7 @@
 			</oemconfig>
 		</type>
 	</preferences>
-	<preferences profiles="Cloud-Base-UEFI-UKI">
+	<preferences profiles="Cloud-Base-UEFI-UKI" arch="x86_64,aarch64">
 		<type image="oem" format="qcow2"
 		      firmware="uefi" efipartsize="1000"
 		      bootpartition="false"
