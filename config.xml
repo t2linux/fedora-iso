@@ -21,7 +21,7 @@
 	<include from="this://./components/desktops/kde.xml"/>
 	<include from="this://./components/desktops/xfce.xml"/>
 	<include from="this://./components/desktops/cinnamon.xml"/>
-	<include from="this://./components/desktops/mate-compiz.xml"/>
+	<include from="this://./components/desktops/mate.xml"/>
 	<include from="this://./components/desktops/i3.xml"/>
 	<include from="this://./components/desktops/lxqt.xml"/>
 	<include from="this://./components/desktops/lxde.xml"/>
@@ -38,7 +38,7 @@
 	<include from="this://./teams/kde.xml"/>
 	<include from="this://./teams/xfce.xml"/>
 	<include from="this://./teams/cinnamon.xml"/>
-	<include from="this://./teams/mate-compiz.xml"/>
+	<include from="this://./teams/mate.xml"/>
 	<include from="this://./teams/i3.xml"/>
 	<include from="this://./teams/lxqt.xml"/>
 	<include from="this://./teams/lxde.xml"/>

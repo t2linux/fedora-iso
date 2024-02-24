@@ -1,11 +1,11 @@
 <image>
 	<profiles>
 		<profile name="DesktopCommon" description="Common desktop packages"/>
-		<profile name="MATE_Compiz-Desktop" description="MATE_Compiz Desktop">
+		<profile name="MATE-Desktop" description="MATE Desktop">
 			<requires profile="DesktopCommon"/>
 		</profile>
 	</profiles>
-	<packages type="image" patternType="plusRecommended" profiles="MATE_Compiz-Desktop">
+	<packages type="image" patternType="plusRecommended" profiles="MATE-Desktop">
 		<!-- install env-group to resolve RhBug:1891500 -->
 		<namedCollection name="mate-desktop-environment"/>
 		<namedCollection name="compiz"/>
