@@ -11,8 +11,6 @@
 		<namedCollection name="compiz"/>
 		<namedCollection name="libreoffice"/>
 		<package name="fedora-release-matecompiz"/>
-		<package name="earlyoom"/> <!-- replaces systemd-oomd-defaults -->
-		<ignore name="systemd-oomd-defaults"/> <!-- replaced by earlyoom, see rhbz#2068699 and rhbz#1933494 -->
 		<ignore name="audacious"/> <!-- breaks the desktop -->
 		<!-- drop things for size -->
 		<ignore name="@3d-printing"/>
