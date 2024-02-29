@@ -126,9 +126,6 @@ cat > /etc/NetworkManager/conf.d/99-azure-unmanaged-devices.conf << EOF
 [keyfile]
 unmanaged-devices=driver:mlx4_core;driver:mlx5_core
 EOF
-
-# Enable the Azure Linux Agent service
-systemctl enable waagent.service
 fi
 
 if [[ "$kiwi_profiles" == *"GCE"* ]]; then
