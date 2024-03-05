@@ -3,6 +3,9 @@
 		<profile name="BootCore" description="Boot core packages"/>
 		<profile name="BootCoreUKI" description="Boot core packages for UKI"/>
 	</profiles>
+	<packages type="bootstrap" patternType="plusRecommended" profiles="BootCore,BootCoreUKI">
+		<package name="grubby"/>
+	</packages>
 	<packages type="image" patternType="plusRecommended" profiles="BootCore">
 		<package name="grub2-efi-aa64" arch="aarch64"/>
 		<package name="grub2-efi-aa64-modules" arch="aarch64"/>
@@ -11,7 +14,6 @@
 		<package name="grub2-pc" arch="x86_64"/>
 		<package name="grub2-pc-modules" arch="x86_64"/>
 		<package name="grub2-ppc64le" arch="ppc64le"/>
-		<package name="grubby"/>
 		<package name="shim-signed-aa64" arch="aarch64"/>
 		<package name="shim-signed-x64" arch="x86_64"/>
 		<package name="kernel-core"/>
