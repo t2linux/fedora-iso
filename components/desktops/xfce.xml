@@ -12,7 +12,6 @@
 		<namedCollection name="xfce-extra-plugins"/>
 		<namedCollection name="xfce-media"/>
 		<namedCollection name="xfce-office"/>
-		<package name="fedora-release-xfce"/>
 		<package name="wget"/>
 		<package name="system-config-printer"/>
 		<!-- Save some space -->

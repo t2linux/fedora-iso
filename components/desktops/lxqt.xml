@@ -11,7 +11,6 @@
 		<namedCollection name="lxqt-apps"/>
 		<namedCollection name="lxqt-media"/>
 		<namedCollection name="lxqt-l10n"/>
-		<package name="fedora-release-lxqt"/>
 		<package name="lximage-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->
 		<package name="obconf-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->
 		<package name="pavucontrol-qt-l10n"/> <!-- FIXME: put in lxqt-l10n comps group -->

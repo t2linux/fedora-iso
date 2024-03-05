@@ -150,6 +150,9 @@
 			</oemconfig>
 		</type>
 	</preferences>
+	<packages type="bootstrap" patternType="plusRecommended" profiles="CloudCore,CloudCoreUKI">
+		<package name="fedora-release-cloud"/>
+	</packages>
 	<packages type="image" patternType="plusRecommended" profiles="CloudCore">
 		<namedCollection name="cloud-server-environment"/>
 		<ignore name="dracut-config-rescue"/>

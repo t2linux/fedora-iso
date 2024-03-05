@@ -10,7 +10,6 @@
 		<namedCollection name="mate-desktop-environment"/>
 		<namedCollection name="compiz"/>
 		<namedCollection name="libreoffice"/>
-		<package name="fedora-release-matecompiz"/>
 		<ignore name="audacious"/> <!-- breaks the desktop -->
 		<!-- drop things for size -->
 		<ignore name="@3d-printing"/>

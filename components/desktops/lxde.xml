@@ -11,7 +11,6 @@
 		<namedCollection name="lxde-apps"/>
 		<namedCollection name="lxde-media"/>
 		<namedCollection name="lxde-office"/>
-		<package name="fedora-release-lxde"/>
 		<package name="lxpolkit"/> <!-- Ensure LXDE polkit agent is used -->
 		<package name="notification-daemon"/> <!-- Ensure correct notification daemon is used -->
 		<ignore name="PackageKit*"/> <!-- we use dnfdragora instead -->

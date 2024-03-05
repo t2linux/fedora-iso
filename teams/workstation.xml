@@ -5,4 +5,7 @@
 			<requires profile="LiveInstall"/>
 		</profile>
 	</profiles>
+	<packages type="bootstrap" patternType="plusRecommended" profiles="Workstation-Live">
+		<package name="fedora-release-workstation"/>
+	</packages>
 </image>

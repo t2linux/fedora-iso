@@ -9,7 +9,6 @@
 		<namedCollection name="budgie-desktop-environment"/>
 		<namedCollection name="budgie-desktop-apps"/>
 		<namedCollection name="libreoffice"/>
-		<package name="fedora-release-budgie"/>
 		<package name="libreoffice-draw"/>
 		<package name="libreoffice-math"/>
 		<package name="thunderbird"/>

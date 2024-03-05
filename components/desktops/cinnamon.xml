@@ -9,7 +9,6 @@
 		<!-- install env-group to resolve RhBug:1891500 -->
 		<namedCollection name="cinnamon-desktop-environment"/>
 		<namedCollection name="libreoffice"/>
-		<package name="fedora-release-cinnamon"/>
 		<package name="rhythmbox"/>
 		<package name="f39-backgrounds-extras-gnome"/> <!-- extra backgrounds -->
 	</packages>

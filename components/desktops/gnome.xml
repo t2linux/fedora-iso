@@ -8,6 +8,5 @@
 	<packages type="image" patternType="plusRecommended" profiles="GNOME-Desktop">
 		<!-- install env-group to resolve RhBug:1891500 -->
 		<namedCollection name="workstation-product-environment"/>
-		<package name="fedora-release-workstation"/>
 	</packages>
 </image>

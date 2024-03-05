@@ -5,4 +5,7 @@
 			<requires profile="LiveInstall"/>
 		</profile>
 	</profiles>
+	<packages type="bootstrap" patternType="plusRecommended" profiles="Budgie-Live">
+		<package name="fedora-release-budgie"/>
+	</packages>
 </image>

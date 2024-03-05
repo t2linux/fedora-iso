@@ -8,7 +8,6 @@
 	<packages type="image" patternType="plusRecommended" profiles="SoaS-Desktop">
 		<!-- install env-group to resolve RhBug:1891500 -->
 		<namedCollection name="sugar-desktop-environment"/>
-		<package name="fedora-release-soas"/>
 		<package name="dejavu-sans-fonts"/>
 		<package name="dejavu-sans-mono-fonts"/>
 		<package name="madan-fonts"/>

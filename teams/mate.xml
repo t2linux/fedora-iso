@@ -5,4 +5,7 @@
 			<requires profile="LiveInstall"/>
 		</profile>
 	</profiles>
+	<packages type="bootstrap" patternType="plusRecommended" profiles="MATE_Compiz-Live">
+		<package name="fedora-release-matecompiz"/>
+	</packages>
 </image>

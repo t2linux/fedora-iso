@@ -5,4 +5,7 @@
 			<requires profile="LiveInstall"/>
 		</profile>
 	</profiles>
+	<packages type="bootstrap" patternType="plusRecommended" profiles="LXDE-Live">
+		<package name="fedora-release-lxde"/>
+	</packages>
 </image>

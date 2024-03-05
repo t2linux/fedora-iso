@@ -5,4 +5,7 @@
 			<requires profile="LiveInstall"/>
 		</profile>
 	</profiles>
+	<packages type="bootstrap" patternType="plusRecommended" profiles="Cinnamon-Live">
+		<package name="fedora-release-cinnamon"/>
+	</packages>
 </image>

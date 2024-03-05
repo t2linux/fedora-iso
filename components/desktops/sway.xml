@@ -10,6 +10,5 @@
 		<namedCollection name="sway-desktop-environment"/>
 		<namedCollection name="firefox"/>
 		<namedCollection name="swaywm-extended"/>
-		<package name="fedora-release-sway"/>
 	</packages>
 </image>
