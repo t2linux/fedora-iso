@@ -2,7 +2,7 @@ summary: Build Minimal Generic base container image
 discover:
     how: fmf
 environment:
-    image_type: tbz
+    image_type: oci
     image_profile: Container-Base-Generic-Minimal
 execute:
     how: tmt

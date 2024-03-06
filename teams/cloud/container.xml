@@ -12,15 +12,77 @@
 			<requires profile="ContainerCore"/>
 		</profile>
 	</profiles>
-	<preferences profiles="Container-Base-Generic-Minimal,Container-Base-Generic">
-		<type image="tbz"/>
+	<preferences profiles="Container-Base-Generic">
+		<type image="oci">
+			<containerconfig
+			  name="fedora"
+			  tag="rawhide"
+			  maintainer="Fedora Project Contributors &lt;devel@lists.fedoraproject.org&gt;"
+			>
+				<subcommand execute="/bin/bash"/>
+				<labels>
+					<label name="org.opencontainers.image.vendor" value="Fedora Project"/>
+					<label name="org.opencontainers.image.url" value="https://fedoraproject.org/"/>
+					<label name="org.opencontainers.image.license" value="MIT"/>
+					<label name="org.opencontainers.image.version" value="rawhide"/>
+					<!-- Legacy attributes for backward compatibility -->
+					<label name="vendor" value="Fedora Project"/>
+					<label name="license" value="MIT"/>
+					<label name="version" value="rawhide"/>
+				</labels>
+			</containerconfig>
+		</type>
+		<timezone>Etc/UTC</timezone>
+		<locale>en_US</locale>
+		<rpm-locale-filtering>true</rpm-locale-filtering>
+		<rpm-excludedocs>true</rpm-excludedocs>
+	</preferences>
+	<preferences profiles="Container-Base-Generic-Minimal">
+		<type image="oci">
+			<containerconfig
+			  name="fedora-minimal"
+			  tag="rawhide"
+			  maintainer="Fedora Project Contributors &lt;devel@lists.fedoraproject.org&gt;"
+			>
+				<subcommand execute="/bin/bash"/>
+				<labels>
+					<label name="org.opencontainers.image.vendor" value="Fedora Project"/>
+					<label name="org.opencontainers.image.url" value="https://fedoraproject.org/"/>
+					<label name="org.opencontainers.image.license" value="MIT"/>
+					<label name="org.opencontainers.image.version" value="rawhide"/>
+					<!-- Legacy attributes for backward compatibility -->
+					<label name="vendor" value="Fedora Project"/>
+					<label name="license" value="MIT"/>
+					<label name="version" value="rawhide"/>
+				</labels>
+			</containerconfig>
+		</type>
 		<timezone>Etc/UTC</timezone>
 		<locale>en_US</locale>
 		<rpm-locale-filtering>true</rpm-locale-filtering>
 		<rpm-excludedocs>true</rpm-excludedocs>
 	</preferences>
 	<preferences profiles="Container-Toolbox">
-		<type image="tbz"/>
+		<type image="oci">
+			<containerconfig
+			  name="fedora-toolbox"
+			  tag="rawhide"
+			  maintainer="Fedora Project Contributors &lt;devel@lists.fedoraproject.org&gt;"
+			>
+				<subcommand execute="/bin/bash"/>
+				<labels>
+					<label name="org.opencontainers.image.vendor" value="Fedora Project"/>
+					<label name="org.opencontainers.image.url" value="https://fedoraproject.org/"/>
+					<label name="org.opencontainers.image.license" value="MIT"/>
+					<label name="org.opencontainers.image.version" value="rawhide"/>
+					<label name="com.github.containers.toolbox" value="true"/>
+					<!-- Legacy attributes for backward compatibility -->
+					<label name="vendor" value="Fedora Project"/>
+					<label name="license" value="MIT"/>
+					<label name="version" value="rawhide"/>
+				</labels>
+			</containerconfig>
+		</type>
 		<timezone>Etc/UTC</timezone>
 		<locale>en_US</locale>
 		<rpm-locale-filtering>false</rpm-locale-filtering>
