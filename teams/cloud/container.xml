@@ -8,9 +8,7 @@
 		<profile name="Container-Base-Generic" description="Generic Base Container Image">
 			<requires profile="ContainerCore"/>
 		</profile>
-		<profile name="Container-Toolbox" description="Toolbox Container Image">
-			<requires profile="ContainerCore"/>
-		</profile>
+		<profile name="Container-Toolbox" description="Toolbox Container Image"/>
 	</profiles>
 	<preferences profiles="Container-Base-Generic">
 		<type image="oci">
@@ -131,15 +129,30 @@
 		<package name="glibc-minimal-langpack"/>
 		<package name="tzdata"/>
 	</packages>
-	<packages type="image" patternType="plusRecommended" profiles="Container-Toolbox">
+	<packages type="bootstrap" patternType="plusRecommended" profiles="Container-Toolbox">
+		<ignore name="dosfstools"/>
+		<ignore name="e2fsprogs"/>
+		<ignore name="*-firmware"/>
+		<ignore name="fuse-libs"/>
+		<ignore name="geolite2-city"/>
+		<ignore name="geolite2-country"/>
+		<ignore name="grubby"/>
+		<ignore name="kernel"/>
+		<ignore name="libss"/> <!-- used by e2fsprogs -->
+		<ignore name="pinentry"/>
+		<ignore name="shared-mime-info"/>
+		<ignore name="sssd-client"/>
 		<!-- This is a weak dep of systemd, we do not want this in the container;
 		     see: https://github.com/containers/toolbox/issues/1410  -->
 		<ignore name="systemd-resolved"/>
+		<ignore name="trousers"/>
+		<ignore name="xkeyboard-config"/>
 		<package name="acl"/>
 		<package name="bash"/>
 		<package name="bash-completion"/>
 		<package name="bc"/>
 		<package name="bzip2"/>
+		<package name="coreutils"/>
 		<package name="coreutils-common"/>
 		<package name="curl"/>
 		<package name="default-editor"/>
@@ -147,6 +160,7 @@
 		<package name="dnf"/>
 		<package name="dnf-yum"/> <!-- https://pagure.io/fesco/issue/1312#comment-30991 -->
 		<package name="dnf-plugins-core"/>
+		<package name="fedora-release-container"/>
 		<package name="findutils"/>
 		<package name="flatpak-spawn"/>
 		<package name="fpaste"/>
@@ -161,6 +175,7 @@
 		<package name="hostname"/>
 		<package name="iproute"/>
 		<package name="iputils"/>
+		<package name="kbd-misc"/>
 		<package name="keyutils"/>
 		<package name="krb5-libs"/>
 		<package name="less"/>
@@ -183,6 +198,7 @@
 		<package name="psmisc"/>
 		<package name="python3"/>
 		<package name="rootfiles"/>
+		<package name="rpm"/>
 		<package name="rsync"/>
 		<package name="sed"/>
 		<package name="shadow-utils"/>
@@ -207,5 +223,11 @@
 		<package name="xz"/>
 		<package name="zip"/>
 		<package name="zstd"/>
+	</packages>
+	<packages type="uninstall" profiles="Container-Toolbox">
+		<package name="kbd-misc"/>
+		<package name="pinentry"/>
+		<package name="systemd-resolved"/>
+		<package name="xkeyboard-config"/>
 	</packages>
 </image>
