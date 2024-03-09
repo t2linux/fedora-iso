@@ -160,7 +160,7 @@
 		<package name="dnf"/>
 		<package name="dnf-yum"/> <!-- https://pagure.io/fesco/issue/1312#comment-30991 -->
 		<package name="dnf-plugins-core"/>
-		<package name="fedora-release-container"/>
+		<package name="fedora-release-toolbx"/>
 		<package name="findutils"/>
 		<package name="flatpak-spawn"/>
 		<package name="fpaste"/>
