@@ -129,6 +129,26 @@
 			</oemconfig>
 		</type>
 	</preferences>
+	<preferences profiles="Cloud-Base-Generic" arch="s390x">
+		<type image="oem" format="qcow2"
+		      filesystem="btrfs" btrfs_root_is_subvolume="true" btrfs_set_default_volume="false" fsmountoptions="compress=zstd:1"
+		      kernelcmdline="no_timer_check net.ifnames=0 console=tty1 console=ttyS0,115200n8 dasd_mod.dasd=ipldev"
+		      devicepersistency="by-uuid" target_blocksize="4096"
+		      bootpartition="true" bootpartsize="1000" bootfilesystem="ext4"
+		      rootfs_label="fedora"
+		      >
+			<bootloader name="zipl" targettype="CDL" timeout="1"/>
+			<size unit="G">5</size>
+			<systemdisk>
+				<volume name="@root=root"/>
+				<volume name="home" parent="/"/>
+				<volume name="var" parent="/"/>
+			</systemdisk>
+			<oemconfig>
+				<oem-resize>false</oem-resize>
+			</oemconfig>
+		</type>
+	</preferences>
 	<preferences profiles="Cloud-Base-UEFI-UKI" arch="x86_64,aarch64">
 		<type image="oem" format="qcow2"
 		      firmware="uefi" efipartsize="1000"

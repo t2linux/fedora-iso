@@ -14,6 +14,7 @@
 		<package name="grub2-pc" arch="x86_64"/>
 		<package name="grub2-pc-modules" arch="x86_64"/>
 		<package name="grub2-ppc64le" arch="ppc64le"/>
+		<package name="s390utils-base" arch="s390x"/>
 		<package name="shim-signed-aa64" arch="aarch64"/>
 		<package name="shim-signed-x64" arch="x86_64"/>
 		<package name="kernel-core"/>
