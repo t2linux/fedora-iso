@@ -212,7 +212,7 @@
 		<package name="unzip"/>
 		<package name="util-linux"/>
 		<package name="util-linux-core"/>
-		<package name="vim-enhanced"/>
+		<package name="vim-minimal"/>
 		<package name="vte-profile"/>
 		<package name="vulkan-loader"/>
 		<package name="wget"/>
