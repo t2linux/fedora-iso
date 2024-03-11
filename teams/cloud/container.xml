@@ -222,7 +222,6 @@
 		<package name="xorg-x11-xauth"/>
 		<package name="xz"/>
 		<package name="zip"/>
-		<package name="zstd"/>
 	</packages>
 	<packages type="uninstall" profiles="Container-Toolbox">
 		<package name="kbd-misc"/>
