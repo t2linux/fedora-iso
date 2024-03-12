@@ -7,12 +7,12 @@
 		<specification>Fedora Linux</specification>
 	</description>
 	<preferences>
-		<version>Rawhide</version>
+		<version>40</version>
 		<packagemanager>dnf</packagemanager>
 		<locale>en_US</locale>
 		<keytable>us</keytable>
 		<timezone>UTC</timezone>
-		<release-version>rawhide</release-version>
+		<release-version>40</release-version>
 	</preferences>
 	<include from="this://./repositories/core.xml"/>
 	<include from="this://./components/boot.xml"/>
