@@ -22,10 +22,12 @@
 					<label name="org.opencontainers.image.vendor" value="Fedora Project"/>
 					<label name="org.opencontainers.image.url" value="https://fedoraproject.org/"/>
 					<label name="org.opencontainers.image.license" value="MIT"/>
+					<label name="org.opencontainers.image.name" value="fedora"/>
 					<label name="org.opencontainers.image.version" value="40"/>
 					<!-- Legacy attributes for backward compatibility -->
 					<label name="vendor" value="Fedora Project"/>
 					<label name="license" value="MIT"/>
+					<label name="name" value="fedora"/>
 					<label name="version" value="40"/>
 				</labels>
 			</containerconfig>
@@ -47,10 +49,12 @@
 					<label name="org.opencontainers.image.vendor" value="Fedora Project"/>
 					<label name="org.opencontainers.image.url" value="https://fedoraproject.org/"/>
 					<label name="org.opencontainers.image.license" value="MIT"/>
+					<label name="org.opencontainers.image.name" value="fedora-minimal"/>
 					<label name="org.opencontainers.image.version" value="40"/>
 					<!-- Legacy attributes for backward compatibility -->
 					<label name="vendor" value="Fedora Project"/>
 					<label name="license" value="MIT"/>
+					<label name="name" value="fedora-minimal"/>
 					<label name="version" value="40"/>
 				</labels>
 			</containerconfig>
@@ -72,11 +76,13 @@
 					<label name="org.opencontainers.image.vendor" value="Fedora Project"/>
 					<label name="org.opencontainers.image.url" value="https://fedoraproject.org/"/>
 					<label name="org.opencontainers.image.license" value="MIT"/>
+					<label name="org.opencontainers.image.name" value="fedora-toolbox"/>
 					<label name="org.opencontainers.image.version" value="40"/>
 					<label name="com.github.containers.toolbox" value="true"/>
 					<!-- Legacy attributes for backward compatibility -->
 					<label name="vendor" value="Fedora Project"/>
 					<label name="license" value="MIT"/>
+					<label name="name" value="fedora-toolbox"/>
 					<label name="version" value="40"/>
 				</labels>
 			</containerconfig>
