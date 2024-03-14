@@ -230,7 +230,6 @@
 		<package name="zip"/>
 	</packages>
 	<packages type="uninstall" profiles="Container-Toolbox">
-		<package name="kbd-misc"/>
 		<package name="pinentry"/>
 		<package name="systemd-resolved"/>
 		<package name="xkeyboard-config"/>
