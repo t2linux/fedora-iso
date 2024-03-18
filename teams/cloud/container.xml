@@ -127,6 +127,9 @@
 	<packages type="bootstrap" profiles="Container-Base-Generic">
 		<ignore name="glibc-langpack-en"/>
 		<ignore name="langpacks-en"/>
+		<package name="bzip2"/>
+		<package name="gzip"/>
+		<package name="sudo"/>
 		<package name="rootfiles"/>
 		<package name="tar"/> <!-- https://bugzilla.redhat.com/show_bug.cgi?id=1409920 -->
 		<package name="vim-minimal"/>
@@ -134,6 +137,8 @@
 		<package name="dnf-yum"/> <!-- https://pagure.io/fesco/issue/1312#comment-30991 -->
 		<package name="glibc-minimal-langpack"/>
 		<package name="tzdata"/>
+		<package name="xz"/>
+		<package name="zstd"/>
 	</packages>
 	<packages type="bootstrap" patternType="plusRecommended" profiles="Container-Toolbox">
 		<ignore name="dosfstools"/>
