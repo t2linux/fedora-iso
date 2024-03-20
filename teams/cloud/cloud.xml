@@ -57,8 +57,7 @@
 		      rootfs_label="fedora"
 		      >
 			<bootloader name="grub2" timeout="0"/>
-			<!-- GCP engineers have told us the disk images have bad performance if they are anything less than 10G -->
-			<size unit="G">10</size>
+			<size unit="G">5</size>
 			<systemdisk>
 				<volume name="@root=root"/>
 				<volume name="home" parent="/"/>
@@ -78,7 +77,8 @@
 		      rootfs_label="fedora"
 		      >
 			<bootloader name="grub2" timeout="0"/>
-			<size unit="G">5</size>
+			<!-- GCP engineers have told us the disk images have bad performance if they are anything less than 10G -->
+			<size unit="G">10</size>
 			<systemdisk>
 				<volume name="@root=root"/>
 				<volume name="home" parent="/"/>
