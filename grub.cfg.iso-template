@@ -25,7 +25,7 @@ insmod part_gpt
 insmod ext2
 
 terminal_input console
-terminal_output ${terminal_setup}
+terminal_output console
 
 set timeout=${boot_timeout}
 set timeout_style=${boot_timeout_style}
