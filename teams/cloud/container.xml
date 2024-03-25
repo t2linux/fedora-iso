@@ -203,7 +203,6 @@
 		<package name="openssl"/>
 		<package name="p11-kit"/>
 		<package name="pam"/>
-		<package name="passwd"/>
 		<package name="pigz"/>
 		<package name="procps-ng"/>
 		<package name="psmisc"/>
