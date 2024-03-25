@@ -147,6 +147,13 @@ EOKEYS
 chmod 600 ~vagrant/.ssh/authorized_keys
 chown -R vagrant:vagrant ~vagrant/.ssh/
 
+cat > /etc/sudoers.d/vagrant << EOSUDOER
+## Ensure the vagrant user always can use sudo
+Defaults:vagrant !requiretty
+vagrant ALL=(ALL) NOPASSWD: ALL
+EOSUDOER
+chmod 600 /etc/sudoers.d/vagrant
+
 cat > /etc/ssh/sshd_config.d/10-vagrant-insecure-rsa-key.conf <<EOF
 # For now the vagrant insecure key is an rsa key
 # https://github.com/hashicorp/vagrant/issues/11783
