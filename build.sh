@@ -14,17 +14,17 @@ for ks in "${kickstarts[@]}"; do
     ks_builddir="$builddir/$ks"; mkdir -p $ks_builddir; cd "$ks_builddir"
     cp -r /repo/fedora-kickstarts/* .; cp -f /repo/*.ks .
     echo '%include t2linux-fedora-common.ks' >> "$ks.ks"
-    sudo ksflatten --config "$ks.ks" --output "$ks-flat.ks" --version F39
+    sudo ksflatten --config "$ks.ks" --output "$ks-flat.ks" --version F40
     livemedia-creator \
         --make-iso \
         --iso-only \
         --no-virt \
         --resultdir results \
-        --releasever 39 \
+        --releasever 40 \
         --ks "$ks-flat.ks" \
         --project t2linux-Fedora-Live \
-        --volid t2linux-Fedora-Live-39 \
-        --iso-name "t2linux-$ks-39.iso"
+        --volid t2linux-Fedora-Live-40 \
+        --iso-name "t2linux-$ks-40.iso"
     find results/*.iso -size +2G -exec sh -c "split -b 1999M -x {} {}. && rm {}" \;
     mv results/* /repo/builddir/iso/
 done
