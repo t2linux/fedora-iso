@@ -165,6 +165,7 @@
 		<package name="bzip2"/>
 		<package name="coreutils"/>
 		<package name="coreutils-common"/>
+		<package name="cpio"/>
 		<package name="curl"/>
 		<package name="default-editor"/>
 		<package name="diffutils"/>
@@ -172,6 +173,7 @@
 		<package name="dnf-yum"/> <!-- https://pagure.io/fesco/issue/1312#comment-30991 -->
 		<package name="dnf-plugins-core"/>
 		<package name="fedora-release-toolbx"/>
+		<package name="file"/>
 		<package name="findutils"/>
 		<package name="flatpak-spawn"/>
 		<package name="fpaste"/>
