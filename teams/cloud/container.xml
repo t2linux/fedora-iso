@@ -189,6 +189,7 @@
 		<package name="kbd-misc"/>
 		<package name="keyutils"/>
 		<package name="krb5-libs"/>
+		<package name="langpacks-en"/>
 		<package name="less"/>
 		<package name="libcap"/>
 		<package name="lsof"/>
