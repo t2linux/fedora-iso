@@ -237,6 +237,7 @@
 		<package name="zip"/>
 	</packages>
 	<packages type="uninstall" profiles="Container-Toolbox">
+		<package name="dracut"/>
 		<package name="pinentry"/>
 		<package name="systemd-resolved"/>
 		<package name="xkeyboard-config"/>
