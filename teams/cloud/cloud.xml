@@ -97,7 +97,7 @@
 		      bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" efipartsize="100" firmware="uefi"
 		      rootfs_label="fedora"
 		      >
-			<bootloader name="grub2" timeout="0"/>
+			<bootloader name="grub2" console="serial" timeout="0"/>
 			<size unit="G">5</size>
 			<systemdisk>
 				<volume name="@root=root"/>
@@ -117,7 +117,7 @@
 		      bootpartition="true" bootpartsize="1000" bootfilesystem="ext4" firmware="ofw"
 		      rootfs_label="fedora"
 		      >
-			<bootloader name="grub2" timeout="0"/>
+			<bootloader name="grub2" console="serial" timeout="0"/>
 			<size unit="G">5</size>
 			<systemdisk>
 				<volume name="@root=root"/>
