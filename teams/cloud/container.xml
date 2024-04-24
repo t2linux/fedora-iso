@@ -119,12 +119,12 @@
 		<ignore name="grubby"/>
 		<ignore name="langpacks-en_GB"/>
 		<!-- https://bugzilla.redhat.com/show_bug.cgi?id=1951111 -->
-		<ignore name="util-linux"/>
 		<ignore name="sssd-client"/>
 		<package name="fedora-release-container"/>
 		<package name="bash"/>
 		<package name="coreutils"/>
 		<package name="rpm"/>
+		<package name="util-linux-core"/>
 	</packages>
 	<packages type="bootstrap" profiles="Container-Base-Generic-Minimal">
 		<ignore name="glibc-langpack-en"/>
@@ -233,7 +233,6 @@
 		<package name="tzdata"/>
 		<package name="unzip"/>
 		<package name="util-linux"/>
-		<package name="util-linux-core"/>
 		<package name="vim-minimal"/>
 		<package name="vte-profile"/>
 		<package name="vulkan-loader"/>
