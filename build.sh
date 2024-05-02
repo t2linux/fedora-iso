@@ -12,9 +12,7 @@ trap cleanup EXIT
 
 for ks in "${kickstarts[@]}"; do
     ks_builddir="$builddir/$ks"; mkdir -p $ks_builddir; cd "$ks_builddir"
-    cp -r /repo/fedora-kickstarts/* .; cp -f /repo/*.ks .
-    echo '%include t2linux-fedora-common.ks' >> "$ks.ks"
-    sudo ksflatten --config "$ks.ks" --output "$ks-flat.ks" --version F40
+    sudo ksflatten --config "/repo/$ks.ks" --output "$ks-flat.ks" --version F40
     livemedia-creator \
         --make-iso \
         --iso-only \
