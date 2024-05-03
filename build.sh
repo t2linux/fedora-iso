@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 set -e
 
-profiles=( "Workstation-Live" "KDE-Live" )
+profiles=( "Workstation-Live" )
 
 mkdir -p /repo/builddir/iso
 builddir=$(mktemp -d); export builddir
