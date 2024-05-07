@@ -30,6 +30,9 @@
 					<label name="name" value="fedora"/>
 					<label name="version" value="40"/>
 				</labels>
+				<environment>
+					<env name="container" value="oci"/>
+				</environment>
 			</containerconfig>
 		</type>
 		<timezone>Etc/UTC</timezone>
@@ -57,6 +60,9 @@
 					<label name="name" value="fedora-minimal"/>
 					<label name="version" value="40"/>
 				</labels>
+				<environment>
+					<env name="container" value="oci"/>
+				</environment>
 			</containerconfig>
 		</type>
 		<timezone>Etc/UTC</timezone>
@@ -85,6 +91,9 @@
 					<label name="name" value="fedora-toolbox"/>
 					<label name="version" value="40"/>
 				</labels>
+				<environment>
+					<env name="container" value="oci"/>
+				</environment>
 			</containerconfig>
 		</type>
 		<timezone>Etc/UTC</timezone>
