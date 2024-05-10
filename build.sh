@@ -4,24 +4,35 @@ set -e
 profiles=( "Workstation-Live" )
 
 mkdir -p /repo/builddir/iso
-builddir=$(mktemp -d); export builddir
-function cleanup {
-    rm -rf "$builddir"
-}
-trap cleanup EXIT
+
+if [ -e "/sys/fs/selinux/enforce" ]; then
+    # Disable SELinux enforcement during the build if it's enforcing
+    selinux_enforcing="$(cat /sys/fs/selinux/enforce)"
+    if [ "$selinux_enforcing" = "1" ]; then
+        setenforce 0
+    fi
+fi
 
 for profile in "${profiles[@]}"; do
-    profile_builddir="$builddir/$profile";
-    mkdir -p $profile_builddir; cd "$profile_builddir"
-    /repo/kiwi-build \
-        --image-type=iso \
-        --image-profile="$profile" \
-        --kiwi-description-dir=/repo/ \
-        --output-dir results
+    rm -rf /var/kiwi/build; mkdir -p /var/kiwi/{build,tmp}
+    kiwi-ng \
+        --color-output \
+        --temp-dir /var/kiwi/tmp \
+        --type iso \
+        --profile Workstation-Live \
+        system build \
+        --description /repo \
+        --target-dir /var/kiwi/build
     find \
-        results/*.iso \
+        /var/kiwi/build/*.iso \
         -size +2G \
         -exec sh -c "split -b 1999M -x {} {}. && rm {}" \;
-    mv results/* /repo/builddir/iso/
+    mv /var/kiwi/build/* /repo/builddir/iso/
 done
-cleanup
+
+if [ -e "/sys/fs/selinux/enforce" ]; then
+    # Re-enable SELinux enforcement now that the build is done
+    if [ "$selinux_enforcing" = "1" ]; then
+        setenforce 1
+    fi
+fi
