@@ -16,6 +16,7 @@ fi
 for profile in "${profiles[@]}"; do
     rm -rf /var/kiwi/build; mkdir -p /var/kiwi/{build,tmp}
     kiwi-ng \
+        --debug \
         --color-output \
         --temp-dir /var/kiwi/tmp \
         --type iso \
