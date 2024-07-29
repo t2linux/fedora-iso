@@ -56,8 +56,7 @@ glibc-all-langpacks
 # provide the livesys scripts
 livesys-scripts
 
-copr-sharpenedblade-t2linux-release
-t2linux-config
+t2linux-release
 %end
 
 %post
