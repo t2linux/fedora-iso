@@ -5,7 +5,7 @@
 		</profile>
 	</profiles>
 	<preferences profiles="LiveInstall">
-		<type image="iso" publisher="t2linux" volid="t2linux_Fedora" primary="true" flags="dmsquash" firmware="uefi" kernelcmdline="quiet rhgb intel_iommu=on iommu=pt mem_sleep=s2idle" mediacheck="false" efifatimagesize="70">
+		<type image="iso" publisher="t2linux" volid="t2linux_Fedora" primary="true" flags="dmsquash" firmware="uefi" kernelcmdline="quiet rhgb intel_iommu=on iommu=pt mem_sleep=s2idle" mediacheck="false" efipartsize="100">
 			<bootloader name="grub2" grub_template="grub.cfg.iso-template" console="console" timeout="10"/>
 		</type>
 	</preferences>
