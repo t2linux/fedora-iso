@@ -24,7 +24,7 @@ bootloader --append="intel_iommu=on iommu=pt mem_sleep=s2idle pcie_ports=native"
 
 %include fedora-repo.ks
 
-repo --name="copr_copr.fedorainfracloud.org_sharpenedblade_t2linux" --cost=80 --baseurl=https://download.copr.fedorainfracloud.org/results/sharpenedblade/t2linux/fedora-$releasever-$basearch/
+repo --name="copr:copr.fedorainfracloud.org:sharpenedblade:t2linux" --cost=80 --baseurl=https://download.copr.fedorainfracloud.org/results/sharpenedblade/t2linux/fedora-$releasever-$basearch/
 
 %packages
 # Explicitly specified here:
@@ -57,6 +57,7 @@ glibc-all-langpacks
 livesys-scripts
 
 t2linux-release
+t2linux-repos
 %end
 
 %post
