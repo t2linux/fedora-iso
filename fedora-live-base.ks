@@ -109,8 +109,5 @@ systemctl disable network
 rm -f /etc/machine-id
 touch /etc/machine-id
 
-# Attempt to install Apple firmware
-/usr/libexec/get-apple-firmware -i get_from_macos || true
-
 %end
 
