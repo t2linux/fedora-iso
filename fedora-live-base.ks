@@ -20,7 +20,6 @@ services --enabled=NetworkManager,ModemManager --disabled=sshd
 network --bootproto=dhcp --device=link --activate
 rootpw --lock --iscrypted locked
 shutdown
-bootloader --append="intel_iommu=on iommu=pt mem_sleep=s2idle pcie_ports=native"
 
 %include fedora-repo.ks
 
