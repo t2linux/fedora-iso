@@ -56,6 +56,7 @@ glibc-all-langpacks
 livesys-scripts
 
 t2linux-release
+t2linux-repos
 %end
 
 %post
