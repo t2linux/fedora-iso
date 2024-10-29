@@ -10,11 +10,7 @@
 #
 #include snippets/packagekit-cached-metadata.ks
 
-part / --size 8192
-
-%packages
-gnome-initial-setup
-%end
+part / --size 8576
 
 %post
 

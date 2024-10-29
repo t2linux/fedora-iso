@@ -12,4 +12,7 @@
 -gfs2-utils
 -reiserfs-utils
 
+# Exclude extra unwanted packages
+-python3-botocore
+
 %end
