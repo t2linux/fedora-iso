@@ -37,7 +37,7 @@ jobs:
           docker run \
             --privileged \
             -v "$PWD":/repo \
-            ghcr.io/t2linux/fedora-ci:40 \
+            ghcr.io/t2linux/fedora-ci:41 \
             /repo/build.sh
 
       - name: Upload Artifact
