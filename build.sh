@@ -1,29 +1,24 @@
 #!/usr/bin/bash
 set -e
 
-kickstarts=( "fedora-live-workstation" "fedora-live-kde" "fedora-live-sway" )
+release="0"
+profiles=( "Workstation-Live" )
+
+kiwi_dir="/repo/fedora-kiwi-descriptions"
 
 mkdir -p /repo/builddir/iso
-builddir=$(mktemp -d -p "/repo/builddir"); export builddir
 function cleanup {
-  rm -rf "$builddir"
+  rm -rf "/repo/outdir-build"
 }
 trap cleanup EXIT
 
-for ks in "${kickstarts[@]}"; do
-    ks_builddir="$builddir/$ks"; mkdir -p $ks_builddir; cd "$ks_builddir"
-    sudo ksflatten --config "/repo/$ks.ks" --output "$ks-flat.ks" --version F41
-    livemedia-creator \
-        --make-iso \
-        --iso-only \
-        --no-virt \
-        --resultdir results \
-        --releasever 41 \
-        --ks "$ks-flat.ks" \
-        --project t2linux-Fedora-Live \
-        --volid t2linux-Fedora-Live-41 \
-        --iso-name "t2linux-$ks-41.iso"
-    find results/*.iso -size +2G -exec sh -c "split -b 1999M -x {} {}. && rm {}" \;
-    mv results/* /repo/builddir/iso/
+for profile in "${profiles[@]}"; do
+    rm -rf "/repo/outdir-build"
+    "${kiwi_dir}"/kiwi-build \
+        --kiwi-file="${kiwi_dir}/Fedora.kiwi" \
+        --image-type=iso \
+        --image-profile="${profile}" \
+        --image-release "${release}" \
+        --output-dir "/repo/outdir"
+    find /repo/outdir/*.iso -size +2G -exec sh -c 'split -b 1999M -x "$1" "$1". && rm "$1"' shell {} \;
 done
-cleanup
