@@ -37,6 +37,7 @@ jobs:
           docker run \
             --privileged \
             -v "$PWD":/repo \
+            --workdir /repo \
             ghcr.io/t2linux/fedora-ci:42 \
             /repo/build.sh
 
