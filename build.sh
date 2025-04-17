@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 set -e
 
-release="0"
+release="1"
 profiles=( "Workstation-Live" "KDE-Desktop-Live" )
 
 repo_dir="$PWD"
