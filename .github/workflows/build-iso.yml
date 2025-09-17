@@ -38,7 +38,7 @@ jobs:
             --privileged \
             -v "$PWD":/repo \
             --workdir /repo \
-            ghcr.io/t2linux/fedora-ci:42 \
+            ghcr.io/t2linux/fedora-ci:43 \
             /repo/build.sh
 
       - name: Upload Artifact
