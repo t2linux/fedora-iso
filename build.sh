@@ -2,7 +2,7 @@
 set -e
 
 release="1"
-profiles=( "Workstation-Live" "KDE-Desktop-Live" )
+profiles=( "Workstation-Live" )
 
 repo_dir="$PWD"
 kiwi_dir="${repo_dir}/fedora-kiwi-descriptions"
